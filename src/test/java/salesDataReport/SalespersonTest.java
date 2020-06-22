@@ -25,7 +25,7 @@ public class SalespersonTest {
 	//Checks if new salesperson sales list is empty
 	public void getSaleEmptysTest() {
 		String name = "John";
-		Person salesperson = new Salesperson(name);
+		Salesperson salesperson = new Salesperson(name);
 		assertTrue(salesperson.getSales().isEmpty());
 	}
 	
