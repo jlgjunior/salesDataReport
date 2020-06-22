@@ -11,7 +11,8 @@ public class SalespersonTest {
 
 	@Test
 	public void getNameTest() {
-		Person person = new Salesperson("John");
-		assertEquals("John", person.getName());
+		String name = "John";
+		Person person = new Salesperson(name);
+		assertEquals(name, person.getName());
 	}
 }
