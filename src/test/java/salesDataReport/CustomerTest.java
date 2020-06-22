@@ -1,6 +1,7 @@
 package salesDataReport;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
@@ -13,8 +14,8 @@ public class CustomerTest {
 	@Test
 	public void getNameTest() {
 		String name = "Ed";
-		Person person = new Customer(name);
-		assertEquals(name, person.getName());
+		Person customer = new Customer(name);
+		assertEquals(name, customer.getName());
 	}
 	
 }
