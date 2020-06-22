@@ -23,7 +23,7 @@ public class SalespersonTest {
 
 	@Test
 	//Checks if new salesperson sales list is empty
-	public void getSaleEmptysTest() {
+	public void getSaleEmptyTest() {
 		String name = "John";
 		Salesperson salesperson = new Salesperson(name);
 		assertTrue(salesperson.getSales().isEmpty());
