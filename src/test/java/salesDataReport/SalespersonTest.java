@@ -1,6 +1,7 @@
 package salesDataReport;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import java.util.ArrayList;
@@ -20,6 +21,16 @@ public class SalespersonTest {
 		String name = "John";
 		Person person = new Salesperson(name);
 		assertEquals(name, person.getName());
+	}
+
+	@Test
+	//Checks if a sale was properly added to salesperson' sales list
+	public void addSaleTest() {
+		String name = "John";
+		Salesperson salesperson = new Salesperson(name);
+		Sale sale = new Sale();
+		salesperson.addSale(sale);
+		assertSame(salesperson.getSales().get(0), sale);
 	}
 
 	@Test
