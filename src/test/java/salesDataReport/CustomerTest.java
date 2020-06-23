@@ -1,9 +1,7 @@
 package salesDataReport;
 
 import static org.junit.Assert.assertEquals;
-
 import org.junit.Test;
-
 import models.Customer;
 import models.Person;
 
