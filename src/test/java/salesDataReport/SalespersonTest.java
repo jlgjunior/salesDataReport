@@ -10,6 +10,7 @@ import org.junit.Test;
 import models.Customer;
 import models.Person;
 import models.Salesperson;
+import models.Sale;
 
 public class SalespersonTest {
 
@@ -26,7 +27,8 @@ public class SalespersonTest {
 	public void getSalesTest() {
 		String name = "John";
 		Salesperson salesperson = new Salesperson(name);
-		assertEquals(salesperson.getSales().getClass(), List<Sale>);
+		salesperson.getSales().add(new Sale());
+		assertEquals(salesperson.getSales().get(0).getClass(), Sale.class);
 	}
 	
 	@Test
