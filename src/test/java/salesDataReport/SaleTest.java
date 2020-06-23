@@ -1,6 +1,9 @@
 package salesDataReport;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+
 import org.junit.Test;
 
 import models.Product;
@@ -30,7 +33,7 @@ public class SaleTest {
 		Integer id = 148;
 		Sale sale = new Sale(id);
 		Product product = new Product(id);
-		sale.addProduct(sale);
+		sale.addProduct(product);
 		assertSame(sale.getProducts().get(0), product);
 	}
 	
