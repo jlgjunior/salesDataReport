@@ -15,4 +15,8 @@ public class Salesperson extends Person {
 		return this.sales ;
 	}
 
+	public void addSale(Sale sale) {
+		this.sales.add(sale);
+	}
+
 }
