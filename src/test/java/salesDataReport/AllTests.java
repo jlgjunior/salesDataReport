@@ -9,6 +9,7 @@ import org.junit.runners.Suite.SuiteClasses;
 				SalespersonTest.class, 
 				SaleTest.class, 
 				ProductTest.class})
+
 public class AllTests {
 
 }
