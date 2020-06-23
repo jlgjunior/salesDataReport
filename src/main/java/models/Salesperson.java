@@ -5,13 +5,13 @@ import java.util.List;
 
 public class Salesperson extends Person {
 
-	private List<Object> sales = new ArrayList();
+	private List<Sale> sales = new ArrayList<Sale>();
 
 	public Salesperson(String name) {
 		super(name);
 	}
 
-	public List<Object> getSales() {
+	public List<Sale> getSales() {
 		return this.sales ;
 	}
 
