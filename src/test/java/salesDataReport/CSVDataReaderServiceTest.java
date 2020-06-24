@@ -9,12 +9,12 @@ import services.CSVDataReaderService;
 public class CSVDataReaderServiceTest {
 
 	@Test
-	public void init() {
+	public void initTest() {
 		try {
 			new CSVDataReaderService();
 		}
 		catch (Exception e){
-			fail("Not yet implemented");
+			fail(e.getMessage());
 		}
 		
 	}
