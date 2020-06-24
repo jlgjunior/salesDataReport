@@ -8,7 +8,8 @@ import org.junit.runners.Suite.SuiteClasses;
 @SuiteClasses({ CustomerTest.class, 
 				SalespersonTest.class, 
 				SaleTest.class, 
-				ProductTest.class})
+				ProductTest.class,
+				CSVDataReaderServiceTest.class})
 
 public class AllTests {
 
