@@ -21,6 +21,7 @@ public class CSVDataReaderServiceTest {
 		List<String[]> resultList = null;
 		String filename = getClass().getClassLoader().getResource("exampleSimple").getFile();
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
+		csvDataReaderService.setSeparator('!');
 		try {
 			Reader reader = new FileReader(filename);
 			resultList = csvDataReaderService.loadData(reader);
