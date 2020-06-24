@@ -27,6 +27,7 @@ public class CSVDataReaderService {
 	}
 
 	public List<String[]> loadData(Reader reader) {
+		List<String[]> resultList;
 		CSVParser csvParser = new CSVParserBuilder().withSeparator(this.separator)
 				                          			.withIgnoreQuotations(true)
 				                          			.build();
@@ -35,12 +36,12 @@ public class CSVDataReaderService {
 														  .build();
 		
 		try {
-			return csvReader.readAll();
+			resultList =  csvReader.readAll();
 		} catch (IOException | CsvException e) {
-			// TODO Auto-generated catch block
+			resultList = new LinkedList<String[]>();
 			e.printStackTrace();
 		}
-		return new LinkedList<String[]>();
+		return resultList;
 	}
 
 	public void setSeparator(char separator) {
