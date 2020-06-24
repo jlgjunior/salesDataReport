@@ -19,7 +19,7 @@ import com.opencsv.exceptions.CsvException;
 @Qualifier("csvDataReaderService")
 public class CSVDataReaderService {
 
-	public String a = "a";
+	private char separator = 'ç';
 	
 	@Autowired
 	public CSVDataReaderService() {
@@ -27,7 +27,7 @@ public class CSVDataReaderService {
 	}
 
 	public List<String[]> loadData(Reader reader) {
-		CSVParser csvParser = new CSVParserBuilder().withSeparator('ç')
+		CSVParser csvParser = new CSVParserBuilder().withSeparator(this.separator)
 				                          			.withIgnoreQuotations(true)
 				                          			.build();
 		CSVReader csvReader = new CSVReaderBuilder(reader).withSkipLines(0)
@@ -41,6 +41,10 @@ public class CSVDataReaderService {
 			e.printStackTrace();
 		}
 		return new LinkedList<String[]>();
+	}
+
+	public void setSeparator(char separator) {
+		this.separator = separator;
 	}
 
 }
