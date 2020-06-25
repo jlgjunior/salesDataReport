@@ -17,10 +17,10 @@ public class CSVSalespersonData extends CSVData {
 			
 	}
 	
-	public void loadData(String[] data) {
-		String cpf = data[1];
-		String name = data[2];
-		float salary = Float.valueOf(data[3]);
+	public void loadData(String cpf, String name, String salary) {
+		this.cpf = cpf;
+		this.name = name;
+		this.salary = Float.valueOf(salary);
 	}
 
 }
