@@ -15,6 +15,8 @@ import com.opencsv.CSVReader;
 import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
 
+import models.CSVData;
+
 @Service
 @Qualifier("csvDataReaderService")
 public class CSVDataReaderService {
@@ -58,8 +60,8 @@ public class CSVDataReaderService {
 		return resultArray;
 	}
 	
-	public void getNextCSVData() {
-		
+	public CSVData getNextCSVData() {
+		return null;
 	}
 
 }
