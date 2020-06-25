@@ -32,7 +32,6 @@ public class CSVDataReaderServiceTest {
 		String filename;
 		Reader reader;
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
-		Integer count = 0;
 		if (csvDataReaderService.hasNextLine()) {
 			fail("Should not have a next line");
 		}
