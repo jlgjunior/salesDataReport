@@ -48,4 +48,14 @@ public class CSVDataReaderService {
 		return this.loadedData;
 	}
 
+	public boolean hasNextLine() {
+		return !this.loadedData.isEmpty();
+	}
+	
+	public String[] getNextLine() {
+		String [] resultArray = {}; 
+		resultArray = (hasNextLine() ? this.loadedData.remove(0) : resultArray);
+		return resultArray;
+	}
+
 }
