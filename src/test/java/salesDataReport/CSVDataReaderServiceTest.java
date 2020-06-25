@@ -12,6 +12,34 @@ import services.CSVDataReaderService;
 public class CSVDataReaderServiceTest {
 	
 	@Test
+	public void getNextLineTest() {
+		String filename;
+		Reader reader;
+		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
+		Integer count = 0;
+		while (csvDataReaderService.hasNextLine()) {
+			csvDataReaderService.getNextLine();	
+			++count;
+		}
+		filename = getClass().getClassLoader().getResource("example").getFile();
+		reader = new FileReader(filename);
+		csvDataReaderService.loadData(reader);
+		while (csvDataReaderService.hasNextLine()) {
+			csvDataReaderService.getNextLine();	
+			++count;
+		}
+		filename = getClass().getClassLoader().getResource("exampleSimple").getFile();
+		reader = new FileReader(filename);
+		csvDataReaderService.setSeparator('!');
+		csvDataReaderService.loadData(reader);
+		while (csvDataReaderService.hasNextLine()) {
+			csvDataReaderService.getNextLine();	
+			++count;
+		}
+		
+	}
+	
+	@Test
 	public void getLoadedDataTest() {
 		String result = "";
 		String expected = "testteste";
