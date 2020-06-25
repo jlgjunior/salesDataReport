@@ -13,6 +13,11 @@ import services.CSVDataReaderService;
 public class CSVDataReaderServiceTest {
 	
 	@Test
+	public void getNextCSVDataTest() {
+		fail("not implemented yet");
+	}
+	
+	@Test
 	public void hasNextLineTest() {
 		String filename;
 		Reader reader;
