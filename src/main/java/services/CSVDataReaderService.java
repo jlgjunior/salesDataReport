@@ -66,12 +66,12 @@ public class CSVDataReaderService {
 		if (hasNextLine()){
 			data = getNextLine();
 			if (data[0].equals("001")) {
-				String cpf = data[1];
-				String name = data[2];
-				String salary = data[3];
 				csvDataResult = new CSVSalespersonData();
-				((CSVSalespersonData) csvDataResult).loadData(cpf, name, salary);
 			}
+			else {
+				return null;
+			}
+			csvDataResult.loadData(data);
 		}
 		return csvDataResult;
 	}
