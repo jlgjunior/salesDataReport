@@ -57,5 +57,9 @@ public class CSVDataReaderService {
 		resultArray = (hasNextLine() ? this.loadedData.remove(0) : resultArray);
 		return resultArray;
 	}
+	
+	public void getNextCSVData() {
+		
+	}
 
 }
