@@ -9,7 +9,8 @@ import org.junit.runners.Suite.SuiteClasses;
 				SalespersonTest.class, 
 				SaleTest.class, 
 				ProductTest.class,
-				CSVDataReaderServiceTest.class})
+				CSVDataReaderServiceTest.class,
+				CSVSalespersonDataTest.class})
 
 public class AllTests {
 

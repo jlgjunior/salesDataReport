@@ -5,7 +5,6 @@ import java.io.Reader;
 import java.util.LinkedList;
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +15,7 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
 
 import models.CSVData;
+import models.CSVSalespersonData;
 
 @Service
 @Qualifier("csvDataReaderService")
@@ -49,7 +49,7 @@ public class CSVDataReaderService {
 	public List<String[]> getLoadedData() {
 		return this.loadedData;
 	}
-
+	
 	public boolean hasNextLine() {
 		return !this.loadedData.isEmpty();
 	}
@@ -61,7 +61,15 @@ public class CSVDataReaderService {
 	}
 	
 	public CSVData getNextCSVData() {
-		return null;
+		String[] data;
+		CSVData csvDataResult = null;
+		if (hasNextLine()){
+			data = getNextLine();
+			if (data[0].equals("001")) {
+				csvDataResult = new CSVSalespersonData();
+			}
+		}
+		return csvDataResult;
 	}
 
 }

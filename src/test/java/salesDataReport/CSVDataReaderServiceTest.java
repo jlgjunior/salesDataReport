@@ -14,7 +14,17 @@ public class CSVDataReaderServiceTest {
 	
 	@Test
 	public void getNextCSVDataTest() {
-		fail("not implemented yet");
+		String filename;
+		Reader reader;
+		filename = getClass().getClassLoader().getResource("example").getFile();
+		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
+		try {
+			reader = new FileReader(filename);
+			csvDataReaderService.loadData(reader);
+			assertNotNull(csvDataReaderService.getNextCSVData());
+		} catch (FileNotFoundException e) {
+			fail(e.getMessage());
+		}
 	}
 	
 	@Test
