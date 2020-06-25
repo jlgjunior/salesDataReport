@@ -1,6 +1,6 @@
 package models;
 
-public class CSVSalespersonData extends CSVData {
+public class CSVSalespersonData implements CSVData {
 
 	private String cpf;
 	private String name;
@@ -17,10 +17,17 @@ public class CSVSalespersonData extends CSVData {
 			
 	}
 	
-	public void loadData(String cpf, String name, String salary) {
-		this.cpf = cpf;
-		this.name = name;
-		this.salary = Float.valueOf(salary);
+	@Override
+	public boolean loadData(String[] data) {
+		try {
+			this.cpf = data[1];
+			this.name = data[2];
+			this.salary = Float.valueOf(data[3]);
+			return true;
+		}
+		catch (ArrayIndexOutOfBoundsException|NumberFormatException e) {
+			return false;
+		}
 	}
 
 	@Override

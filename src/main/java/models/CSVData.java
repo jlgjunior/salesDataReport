@@ -1,11 +1,9 @@
 package models;
 
-public class CSVData {
+import java.io.Reader;
 
-	private String code;
+public interface CSVData {
 	
-	public CSVData() {
-		
-	}
+	public boolean loadData(String[] data);
 
 }
