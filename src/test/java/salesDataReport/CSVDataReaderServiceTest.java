@@ -12,11 +12,27 @@ import services.CSVDataReaderService;
 public class CSVDataReaderServiceTest {
 	
 	@Test
+	public void hasNextLineTest() {
+		String filename;
+		Reader reader;
+		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
+		Integer count = 0;
+		if (csvDataReaderService.hasNextLine()) {
+			fail("Should not have a next line");
+		}
+		filename = getClass().getClassLoader().getResource("example").getFile();
+		reader = new FileReader(filename);
+		csvDataReaderService.loadData(reader);
+		assertTrue(csvDataReaderService.hasNextLine());
+	}
+	
+	@Test
 	public void getNextLineTest() {
 		String filename;
 		Reader reader;
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
 		Integer count = 0;
+		Integer expected = 7;
 		while (csvDataReaderService.hasNextLine()) {
 			csvDataReaderService.getNextLine();	
 			++count;
@@ -36,7 +52,7 @@ public class CSVDataReaderServiceTest {
 			csvDataReaderService.getNextLine();	
 			++count;
 		}
-		
+		assertEquals(expected, count);
 	}
 	
 	@Test
