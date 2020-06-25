@@ -12,7 +12,7 @@ import services.CSVDataReaderService;
 public class CSVDataReaderServiceTest {
 	
 	@Test
-	public void loadDataTest() {
+	public void getLoadedDataTest() {
 		String result = "";
 		String expected = "testteste";
 		List<String[]> resultList = null;

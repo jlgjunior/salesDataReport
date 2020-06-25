@@ -20,12 +20,12 @@ import com.opencsv.exceptions.CsvException;
 public class CSVDataReaderService {
 
 	private char separator = 'ç';
-	
-	@Autowired
+	private List<String[]> loadedData = new LinkedList<String[]>();
+
 	public CSVDataReaderService() {
 	 
 	}
-
+	
 	public List<String[]> loadData(Reader reader) {
 		List<String[]> resultList;
 		CSVParser csvParser = new CSVParserBuilder().withSeparator(this.separator)
