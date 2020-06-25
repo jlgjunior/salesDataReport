@@ -2,6 +2,7 @@ package salesDataReport;
 
 import static org.junit.Assert.*;
 
+import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.Reader;
 import java.util.List;
@@ -21,9 +22,13 @@ public class CSVDataReaderServiceTest {
 			fail("Should not have a next line");
 		}
 		filename = getClass().getClassLoader().getResource("example").getFile();
-		reader = new FileReader(filename);
-		csvDataReaderService.loadData(reader);
-		assertTrue(csvDataReaderService.hasNextLine());
+		try {
+			reader = new FileReader(filename);
+			csvDataReaderService.loadData(reader);
+			assertTrue(csvDataReaderService.hasNextLine());
+		} catch (FileNotFoundException e) {
+			fail(e.getMessage());
+		}
 	}
 	
 	@Test
@@ -38,16 +43,24 @@ public class CSVDataReaderServiceTest {
 			++count;
 		}
 		filename = getClass().getClassLoader().getResource("example").getFile();
-		reader = new FileReader(filename);
-		csvDataReaderService.loadData(reader);
+		try {
+			reader = new FileReader(filename);
+			csvDataReaderService.loadData(reader);
+		} catch (FileNotFoundException e) {
+			fail(e.getMessage());
+		}
 		while (csvDataReaderService.hasNextLine()) {
 			csvDataReaderService.getNextLine();	
 			++count;
 		}
 		filename = getClass().getClassLoader().getResource("exampleSimple").getFile();
-		reader = new FileReader(filename);
-		csvDataReaderService.setSeparator('!');
-		csvDataReaderService.loadData(reader);
+		try {
+			reader = new FileReader(filename);
+			csvDataReaderService.setSeparator('!');
+			csvDataReaderService.loadData(reader);
+		} catch (FileNotFoundException e) {
+			fail(e.getMessage());
+		}
 		while (csvDataReaderService.hasNextLine()) {
 			csvDataReaderService.getNextLine();	
 			++count;
