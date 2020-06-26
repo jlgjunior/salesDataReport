@@ -2,9 +2,6 @@ package salesDataReport;
 
 import static org.junit.Assert.*;
 
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
 import java.util.List;
 import org.junit.Test;
 
@@ -42,7 +39,6 @@ public class CSVDataReaderServiceTest {
 	@Test
 	public void hasNextLineTest() {
 		String filename;
-		Reader reader;
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
 		if (csvDataReaderService.hasNextLine()) {
 			fail("Should not have a next line");
@@ -58,7 +54,6 @@ public class CSVDataReaderServiceTest {
 	@Test
 	public void getNextLineTest() {
 		String filename;
-		Reader reader;
 		final String EXAMPLE = "example";
 		final String EXAMPLE_SIMPLE = "exampleSimple";
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
@@ -105,13 +100,11 @@ public class CSVDataReaderServiceTest {
 				for (String field : line) {
 					result += field;
 				}
-			}
-			
+			}	
 		}
 		else {
 			fail("Could not load CSV file");
 		}
 		assertEquals(result, expected);
 	}
-
 }
