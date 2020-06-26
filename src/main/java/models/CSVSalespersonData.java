@@ -4,13 +4,13 @@ public class CSVSalespersonData implements CSVData {
 
 	private String cpf;
 	private String name;
-	private float salary;
+	private Float salary;
 	
 	public CSVSalespersonData() {
 
 	}
 	
-	public CSVSalespersonData(String cpf, String name, float salary) {
+	public CSVSalespersonData(String cpf, String name, Float salary) {
 		this.cpf = cpf;
 		this.name = name;
 		this.salary = salary;
@@ -37,7 +37,7 @@ public class CSVSalespersonData implements CSVData {
 		return name;
 	}
 
-	public float getSalary() {
+	public Float getSalary() {
 		return salary;
 	}
 
