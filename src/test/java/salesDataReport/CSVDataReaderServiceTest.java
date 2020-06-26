@@ -17,21 +17,9 @@ public class CSVDataReaderServiceTest {
 	@Test
 	public void loadCSVFileTest() {
 		String filename;
-		Reader reader;
-		String[] data = {"001", "1234567891234", "Pedro", "50000"};
-		CSVData resultData = null;
-		CSVData salespersonData = new CSVSalespersonData();
-		salespersonData.loadData(data);
 		filename = getClass().getClassLoader().getResource("example").getFile();
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
-		try {
-			reader = new FileReader(filename);
-			csvDataReaderService.loadData(reader);
-			resultData = csvDataReaderService.getNextCSVData();
-			assertEquals(salespersonData, resultData);
-		} catch (FileNotFoundException e) {
-			fail(e.getMessage());
-		}
+		assertTrue(csvDataReaderService.loadCSVFile(filename));
 	}
 	
 	@Test
