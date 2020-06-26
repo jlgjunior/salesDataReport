@@ -98,19 +98,18 @@ public class CSVDataReaderServiceTest {
 		String filename = getClass().getClassLoader().getResource("exampleSimple").getFile();
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
 		csvDataReaderService.setSeparator('!');
-		try {
-			Reader reader = new FileReader(filename);
-			csvDataReaderService.loadData(reader);
+		if (csvDataReaderService.loadCSVFile(filename)) {
 			resultList = csvDataReaderService.getLoadedData();
-		
+			
 			for (String[] line : resultList) {
 				for (String field : line) {
 					result += field;
 				}
 			}
+			
 		}
-		catch (Exception e){   
-			fail(e.getMessage());
+		else {
+			fail("Could not load CSV file");
 		}
 		assertEquals(result, expected);
 	}
