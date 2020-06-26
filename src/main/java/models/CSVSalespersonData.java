@@ -29,6 +29,18 @@ public class CSVSalespersonData implements CSVData {
 		}
 	}
 
+	public String getCpf() {
+		return cpf;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public float getSalary() {
+		return salary;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
