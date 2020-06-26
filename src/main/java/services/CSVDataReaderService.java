@@ -53,7 +53,11 @@ public class CSVDataReaderService {
 		return this.loadedData;
 	}
 	
-	public boolean hasNextLine() {
+	public boolean hasNextData() {
+		return hasNextLine();
+	}
+	
+	private boolean hasNextLine() {
 		return !this.loadedData.isEmpty();
 	}
 	
