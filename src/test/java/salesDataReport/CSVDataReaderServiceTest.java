@@ -59,6 +59,8 @@ public class CSVDataReaderServiceTest {
 	public void getNextLineTest() {
 		String filename;
 		Reader reader;
+		final String EXAMPLE = "example";
+		final String EXAMPLE_SIMPLE = "exampleSimple";
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
 		Integer count = 0;
 		Integer expected = 7;
@@ -66,28 +68,24 @@ public class CSVDataReaderServiceTest {
 			csvDataReaderService.getNextLine();	
 			++count;
 		}
-		filename = getClass().getClassLoader().getResource("example").getFile();
-		try {
-			reader = new FileReader(filename);
-			csvDataReaderService.loadData(reader);
-		} catch (FileNotFoundException e) {
-			fail(e.getMessage());
+		filename = getClass().getClassLoader().getResource(EXAMPLE).getFile();
+		if (csvDataReaderService.loadCSVFile(filename)) {
+			while (csvDataReaderService.hasNextLine()) {
+				csvDataReaderService.getNextLine();	
+				++count;
+			}
+		} else {
+			fail("Could not load CSV file");
 		}
-		while (csvDataReaderService.hasNextLine()) {
-			csvDataReaderService.getNextLine();	
-			++count;
-		}
-		filename = getClass().getClassLoader().getResource("exampleSimple").getFile();
-		try {
-			reader = new FileReader(filename);
-			csvDataReaderService.setSeparator('!');
-			csvDataReaderService.loadData(reader);
-		} catch (FileNotFoundException e) {
-			fail(e.getMessage());
-		}
-		while (csvDataReaderService.hasNextLine()) {
-			csvDataReaderService.getNextLine();	
-			++count;
+		filename = getClass().getClassLoader().getResource(EXAMPLE_SIMPLE).getFile();
+		csvDataReaderService.setSeparator('!');
+		if (csvDataReaderService.loadCSVFile(filename)) {
+			while (csvDataReaderService.hasNextLine()) {
+				csvDataReaderService.getNextLine();	
+				++count;
+			}
+		} else {
+			fail("Could not load CSV file");
 		}
 		assertEquals(expected, count);
 	}
