@@ -8,9 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.boot.SpringBootConfiguration;
-import org.springframework.context.annotation.ComponentScan;
 import org.springframework.stereotype.Service;
 
 import com.opencsv.CSVParser;
@@ -20,8 +17,6 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
 
 import models.CSVData;
-import models.CSVSalespersonData;
-import utils.CSVDataAbstractFactory;
 import utils.CSVDataFactory;
 
 @Service
