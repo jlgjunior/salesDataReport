@@ -61,7 +61,7 @@ public class CSVDataReaderService {
 		return !this.loadedData.isEmpty();
 	}
 	
-	public String[] getNextLine() {
+	private String[] getNextLine() {
 		String [] resultArray = {}; 
 		resultArray = (hasNextLine() ? this.loadedData.remove(0) : resultArray);
 		return resultArray;
