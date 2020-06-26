@@ -6,18 +6,37 @@ import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.List;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.SpringBootConfiguration;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.junit4.SpringRunner;
 
 import models.CSVData;
 import models.CSVSalespersonData;
 import services.CSVDataReaderService;
+import utils.CSVDataFactory;
 
+@SpringBootTest(classes= {CSVDataFactory.class, CSVDataReaderService.class})
+@RunWith(SpringRunner.class)
+@SpringBootConfiguration
 public class CSVDataReaderServiceTest {
+	@Autowired
+	CSVDataReaderService csvDataReaderService;
+	
+	@Test
+	public void unloadTest() {
+		String filename;
+		filename = getClass().getClassLoader().getResource("example").getFile();
+		csvDataReaderService.loadCSVFile(filename);
+		csvDataReaderService.unload();
+		assertNull(csvDataReaderService.getNextCSVData());
+	}
 	
 	@Test
 	public void loadCSVFileTest() {
 		String filename;
 		filename = getClass().getClassLoader().getResource("example").getFile();
-		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
 		assertTrue(csvDataReaderService.loadCSVFile(filename));
 	}
 	
@@ -29,7 +48,6 @@ public class CSVDataReaderServiceTest {
 		CSVData salespersonData = new CSVSalespersonData();
 		salespersonData.loadData(data);
 		filename = getClass().getClassLoader().getResource("example").getFile();
-		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
 		if (csvDataReaderService.loadCSVFile(filename)) {
 			resultData = csvDataReaderService.getNextCSVData();
 			assertEquals(salespersonData, resultData);
@@ -45,7 +63,7 @@ public class CSVDataReaderServiceTest {
 		String filename;
 		Method hasNextLine = CSVDataReaderService.class.getDeclaredMethod("hasNextLine", TYPES);
 		hasNextLine.setAccessible(true);
-		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
+		csvDataReaderService.unload();
 		if (((boolean)hasNextLine.invoke(csvDataReaderService, ARGS))) {
 			fail("Should not have a next line");
 		}
@@ -65,10 +83,10 @@ public class CSVDataReaderServiceTest {
 		final Class<?>[] TYPES = {};
 		Method getNextLine = CSVDataReaderService.class.getDeclaredMethod("getNextLine", TYPES);
 		getNextLine.setAccessible(true);
-		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
 		String filename;
 		Integer count = 0;
 		Integer expected = 7;
+		csvDataReaderService.unload();
 		while (((String[])getNextLine.invoke(csvDataReaderService, ARGS)).length != 0) {
 			++count;
 		}
@@ -98,7 +116,6 @@ public class CSVDataReaderServiceTest {
 		String expected = "testteste";
 		List<String[]> resultList = null;
 		String filename = getClass().getClassLoader().getResource("exampleSimple").getFile();
-		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
 		csvDataReaderService.setSeparator('!');
 		if (csvDataReaderService.loadCSVFile(filename)) {
 			resultList = csvDataReaderService.getLoadedData();
