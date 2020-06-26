@@ -7,8 +7,6 @@ import models.CSVSalespersonData;
 
 public class CSVDataFactory extends CSVDataAbstractFactory {
 
-	private CSVPersonDataFactory csvPersonFactory;
-	
 	public CSVDataFactory() {
 
 	}

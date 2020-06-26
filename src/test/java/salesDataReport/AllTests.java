@@ -6,13 +6,14 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ CustomerTest.class, 
-				SalespersonTest.class, 
 				SaleTest.class, 
 				ProductTest.class,
 				CSVDataReaderServiceTest.class,
 				CSVSalespersonDataTest.class,
 				CSVCustomerDataTest.class,
-				CSVSaleDataTest.class})
+				CSVSaleDataTest.class,
+				SalespersonTest.class,
+				CSVDataFactoryTest.class})
 
 public class AllTests {
 
