@@ -1,22 +1,20 @@
 package salesDataReport;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assert.fail;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.Reader;
 
 import org.junit.Test;
 
 import models.CSVData;
 import models.CSVSalespersonData;
-import services.CSVDataReaderService;
 
 
 public class CSVSalespersonDataTest {
 
+	@Test
+	public void loadDataTest() {
+		String[] data = {"001", "1234567891234", "Pedro", "50000"};
+		CSVData salespersonData = new CSVSalespersonData();
+		assertTrue(salespersonData.loadData(data));
+	}
 	
 }
