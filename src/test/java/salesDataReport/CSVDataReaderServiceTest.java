@@ -2,6 +2,8 @@ package salesDataReport;
 
 import static org.junit.Assert.*;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.List;
 import org.junit.Test;
 
@@ -37,36 +39,38 @@ public class CSVDataReaderServiceTest {
 	}
 	
 	@Test
-	public void hasNextLineTest() {
+	public void hasNextLineTest() throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException, InvocationTargetException {
 		String filename;
+		Object[] args = {};
+		Class<?>[] types = {};
+		Method hasNextLine = CSVDataReaderService.class.getDeclaredMethod("hasNextLine", types);
+		hasNextLine.setAccessible(true);
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
-		if (csvDataReaderService.hasNextLine()) {
+		if (((boolean)hasNextLine.invoke(csvDataReaderService, args))) {
 			fail("Should not have a next line");
 		}
 		filename = getClass().getClassLoader().getResource("example").getFile();
 		if (csvDataReaderService.loadCSVFile(filename)) {
-			assertTrue(csvDataReaderService.hasNextLine());
+			assertTrue(((boolean)hasNextLine.invoke(csvDataReaderService, args)));
 		} else {
 			fail("Could not load CSV file");
 		}
 	}
 	
 	@Test
-	public void getNextLineTest() {
-		String filename;
+	public void getNextLineTest() throws IllegalAccessException, IllegalArgumentException, InvocationTargetException, NoSuchMethodException, SecurityException {
 		final String EXAMPLE = "example";
 		final String EXAMPLE_SIMPLE = "exampleSimple";
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
+		String filename;
 		Integer count = 0;
 		Integer expected = 7;
-		while (csvDataReaderService.hasNextLine()) {
-			csvDataReaderService.getNextLine();	
+		while (csvDataReaderService.getNextLine().length != 0) {
 			++count;
 		}
 		filename = getClass().getClassLoader().getResource(EXAMPLE).getFile();
 		if (csvDataReaderService.loadCSVFile(filename)) {
-			while (csvDataReaderService.hasNextLine()) {
-				csvDataReaderService.getNextLine();	
+			while (csvDataReaderService.getNextLine().length != 0) {
 				++count;
 			}
 		} else {
@@ -75,8 +79,7 @@ public class CSVDataReaderServiceTest {
 		filename = getClass().getClassLoader().getResource(EXAMPLE_SIMPLE).getFile();
 		csvDataReaderService.setSeparator('!');
 		if (csvDataReaderService.loadCSVFile(filename)) {
-			while (csvDataReaderService.hasNextLine()) {
-				csvDataReaderService.getNextLine();	
+			while (csvDataReaderService.getNextLine().length != 0) {
 				++count;
 			}
 		} else {
