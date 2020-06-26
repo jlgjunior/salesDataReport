@@ -1,5 +1,6 @@
 package salesDataReport;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
@@ -16,4 +17,31 @@ public class CSVCustomerDataTest {
 		assertTrue(customerData.loadData(data));
 	}
 
+	@Test
+	public void getCnpjTest() {
+		final String CNPJ = "2345675434544345";
+		String[] data = {"002", CNPJ, "Jose da Silva", "Rural"};
+		CSVCustomerData customerData = new CSVCustomerData();
+		customerData.loadData(data);
+		assertEquals(CNPJ, customerData.getCnpj());
+	}
+	
+	@Test
+	public void getNameTest() {
+		final String NAME = "Jose da Silva";
+		String[] data = {"002", "2345675434544345", NAME, "Rural"};
+		CSVCustomerData customerData = new CSVCustomerData();
+		customerData.loadData(data);
+		assertEquals(NAME, customerData.getName());
+	}
+	
+	@Test
+	public void getAreaTest() {
+		final String AREA = "Rural";
+		final String NAME = "Jose da Silva";
+		String[] data = {"002", "2345675434544345", NAME, AREA};
+		CSVCustomerData customerData = new CSVCustomerData();
+		customerData.loadData(data);
+		assertEquals(AREA, customerData.getArea());
+	}
 }
