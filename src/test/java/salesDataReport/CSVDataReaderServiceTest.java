@@ -48,12 +48,10 @@ public class CSVDataReaderServiceTest {
 			fail("Should not have a next line");
 		}
 		filename = getClass().getClassLoader().getResource("example").getFile();
-		try {
-			reader = new FileReader(filename);
-			csvDataReaderService.loadData(reader);
+		if (csvDataReaderService.loadCSVFile(filename)) {
 			assertTrue(csvDataReaderService.hasNextLine());
-		} catch (FileNotFoundException e) {
-			fail(e.getMessage());
+		} else {
+			fail("Could not load CSV file");
 		}
 	}
 	
