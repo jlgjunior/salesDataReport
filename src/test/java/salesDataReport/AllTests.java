@@ -10,7 +10,8 @@ import org.junit.runners.Suite.SuiteClasses;
 				SaleTest.class, 
 				ProductTest.class,
 				CSVDataReaderServiceTest.class,
-				CSVSalespersonDataTest.class})
+				CSVSalespersonDataTest.class,
+				CSVCustomerDataTest.class})
 
 public class AllTests {
 

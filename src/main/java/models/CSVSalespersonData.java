@@ -14,7 +14,6 @@ public class CSVSalespersonData implements CSVData {
 		this.cpf = cpf;
 		this.name = name;
 		this.salary = salary;
-			
 	}
 	
 	@Override
