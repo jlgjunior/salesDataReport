@@ -7,7 +7,6 @@ import org.junit.Test;
 import models.CSVData;
 import models.CSVSalespersonData;
 
-
 public class CSVSalespersonDataTest {
 
 	@Test
