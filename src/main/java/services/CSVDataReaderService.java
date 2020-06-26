@@ -17,13 +17,13 @@ import com.opencsv.CSVReaderBuilder;
 import com.opencsv.exceptions.CsvException;
 
 import models.CSVData;
-import utils.CSVDataFactory;
+import utils.CSVDataAbstractFactory;
 
 @Service
 public class CSVDataReaderService {
 
 	@Autowired
-	private CSVDataFactory csvDataFactory;
+	private CSVDataAbstractFactory csvDataFactory;
 	private char separator;
 	private List<String[]> loadedData;
 
