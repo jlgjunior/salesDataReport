@@ -29,6 +29,18 @@ public class CSVCustomerData implements CSVData {
 		}
 	}
 
+	public String getCnpj() {
+		return cnpj;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getArea() {
+		return area;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
