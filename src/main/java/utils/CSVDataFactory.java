@@ -1,7 +1,9 @@
 package utils;
 
+import models.CSVCustomerData;
 import models.CSVData;
 import models.CSVSaleData;
+import models.CSVSalespersonData;
 
 public class CSVDataFactory extends CSVDataAbstractFactory {
 
@@ -13,19 +15,27 @@ public class CSVDataFactory extends CSVDataAbstractFactory {
 
 	@Override
 	public CSVData createCSVData(String[] data) {
-		String type = data[0];
+		String type;
 		CSVData csvReturnData = null;
-		switch (type) {
-			case "001":
-			case "002":
-				csvReturnData = csvPersonFactory.createCSVData(data);
-				break;
-			case "003":
-				csvReturnData = new CSVSaleData();
-				csvReturnData.loadData(data);
-				break;
+		try {
+			type = data[0];
+			switch (type) {
+				case "001":
+					csvReturnData = new CSVSalespersonData();
+					break;
+				case "002":
+					csvReturnData = new CSVCustomerData();
+					break;
+				case "003":
+					csvReturnData = new CSVSaleData();
+					break;
+			}
+			csvReturnData.loadData(data);
 		}
-		return null;
+		catch(ArrayIndexOutOfBoundsException | NullPointerException e) {
+			return null;
+		}
+		return csvReturnData;
 	}
 
 }
