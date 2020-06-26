@@ -44,11 +44,11 @@ public class CSVDataReaderServiceTest {
 		salespersonData.loadData(data);
 		filename = getClass().getClassLoader().getResource("example").getFile();
 		CSVDataReaderService csvDataReaderService = new CSVDataReaderService();
-		if (csvDataReaderService.loadCSVFile("example")) {
+		if (csvDataReaderService.loadCSVFile(filename)) {
 			resultData = csvDataReaderService.getNextCSVData();
 			assertEquals(salespersonData, resultData);
 		} else {
-			fail("Could not CSV file");
+			fail("Could not load CSV file");
 		}
 	}
 	

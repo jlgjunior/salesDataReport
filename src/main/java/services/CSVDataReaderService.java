@@ -1,5 +1,7 @@
 package services;
 
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.IOException;
 import java.io.Reader;
 import java.util.LinkedList;
@@ -28,7 +30,7 @@ public class CSVDataReaderService {
 	 
 	}
 	
-	public void loadData(Reader reader) {
+	public boolean loadData(Reader reader) {
 		CSVParser csvParser = new CSVParserBuilder().withSeparator(this.separator)
 				                          			.withIgnoreQuotations(true)
 				                          			.build();
@@ -37,8 +39,9 @@ public class CSVDataReaderService {
 														  .build();	
 		try {
 			this.loadedData =  csvReader.readAll();
+			return true;
 		} catch (IOException | CsvException e) {
-			e.printStackTrace();
+			return false;
 		}
 	}
 
@@ -74,6 +77,16 @@ public class CSVDataReaderService {
 			csvDataResult.loadData(data);
 		}
 		return csvDataResult;
+	}
+
+	public boolean loadCSVFile(String filepath) {
+		Reader reader;
+		try {
+			reader = new FileReader(filepath);
+			return loadData(reader);
+		} catch (FileNotFoundException e) {
+			return false;
+		}
 	}
 
 }
