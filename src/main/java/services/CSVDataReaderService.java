@@ -29,11 +29,16 @@ public class CSVDataReaderService {
 
 	@Autowired
 	private CSVDataFactory csvDataFactory;
-	private char separator = 'ç';
-	private List<String[]> loadedData = new LinkedList<String[]>();
+	private char separator;
+	private List<String[]> loadedData;
 
 	public CSVDataReaderService() {
-	 
+	  init();
+	}
+	
+	public void init() {
+		separator = 'ç';
+		loadedData = new LinkedList<String[]>();	
 	}
 	
 	public boolean loadData(Reader reader) {
@@ -91,6 +96,10 @@ public class CSVDataReaderService {
 		} catch (FileNotFoundException e) {
 			return false;
 		}
+	}
+	
+	public void unload() {
+		init();
 	}
 
 }
