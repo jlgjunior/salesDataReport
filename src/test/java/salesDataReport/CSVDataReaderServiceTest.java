@@ -37,7 +37,6 @@ public class CSVDataReaderServiceTest {
 	@Test
 	public void getNextCSVDataTest() {
 		String filename;
-		Reader reader;
 		String[] data = {"001", "1234567891234", "Pedro", "50000"};
 		CSVData resultData = null;
 		CSVData salespersonData = new CSVSalespersonData();
