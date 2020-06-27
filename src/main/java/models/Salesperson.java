@@ -3,7 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Salesperson extends Person {
+public class Salesperson extends Person implements PersistantModel<CSVSalespersonData> {
 
 	private List<Sale> sales = new ArrayList<Sale>();
 
@@ -17,6 +17,11 @@ public class Salesperson extends Person {
 
 	public void addSale(Sale sale) {
 		this.sales.add(sale);
+	}
+
+	@Override
+	public void loadCSVData(CSVSalespersonData data) {
+		
 	}
 
 }
