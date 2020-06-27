@@ -5,6 +5,7 @@ import static org.junit.Assert.assertSame;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
+import org.springframework.test.util.ReflectionTestUtils;
 
 import models.Product;
 import models.Sale;
@@ -13,26 +14,29 @@ public class SaleTest {
 
 	@Test
 	public void getIdTest() {
-		Integer id = 148;
-		Sale sale = new Sale(id);
-		assertEquals(id, sale.getId());
+		final Integer ID = 148;
+		Sale sale = new Sale();
+		assertEquals(ID, sale.getId());
 	}
 	
 	@Test
 	//checks if an empty sales product list is instantiated
 	//upon sale creation
 	public void getProductsEmptyTest() {
-		Integer id = 148;
-		Sale sale = new Sale(id);
+		final Integer ID = 148;
+		Sale sale = new Sale();
+		ReflectionTestUtils.setField(sale, "id", ID);
 		assertTrue(sale.getProducts().isEmpty());
 	}
 	
 	@Test
 	//checks if an products object is a product
 	public void addProductTest() {
-		Integer id = 148;
-		Sale sale = new Sale(id);
-		Product product = new Product(id);
+		final Integer ID = 148;
+		Sale sale = new Sale();
+		ReflectionTestUtils.setField(sale, "id", ID);
+		Product product = new Product();
+		ReflectionTestUtils.setField(product, "id", ID);
 		sale.addProduct(product);
 		assertSame(sale.getProducts().get(0), product);
 	}
