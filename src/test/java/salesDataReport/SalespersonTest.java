@@ -27,9 +27,10 @@ public class SalespersonTest {
 	@Test
 	//Checks if a sale was properly added to salesperson' sales list
 	public void addSaleTest() {
-		Integer id = 1;
+		final Integer ID = 1;
 		Salesperson salesperson = new Salesperson();
-		Sale sale = new Sale(id);
+		Sale sale = new Sale();
+		ReflectionTestUtils.setField(sale, "id", ID);
 		salesperson.addSale(sale);
 		assertSame(salesperson.getSales().get(0), sale);
 	}
@@ -37,9 +38,12 @@ public class SalespersonTest {
 	@Test
 	//Checks if salesperson sales list is a list of sales
 	public void getSalesTest() {
-		Integer id = 1;
+		final Integer ID = 1;
 		Salesperson salesperson = new Salesperson();
-		salesperson.getSales().add(new Sale(id));
+		salesperson.getSales().add(new Sale());
+		ReflectionTestUtils.setField(salesperson.getSales().get(0),
+				                     "id", 
+				                     ID);
 		assertEquals(salesperson.getSales().get(0).getClass(), Sale.class);
 	}
 	
