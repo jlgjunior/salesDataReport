@@ -1,6 +1,6 @@
 package models;
 
-public class Customer extends Person<CSVCustomerData>{
+public class Customer extends Person{
 
 	private String cnpj;
 	private String area;
@@ -10,10 +10,11 @@ public class Customer extends Person<CSVCustomerData>{
 	}
 
 	@Override
-	public void loadCSVData(CSVCustomerData data) {
-		this.area = data.getArea();
-		this.name = data.getName();
-		this.cnpj = data.getCnpj();
+	public void loadCSVData(CSVData data) {
+		CSVCustomerData customerData = (CSVCustomerData) data;
+		this.area = customerData.getArea();
+		this.name = customerData.getName();
+		this.cnpj = customerData.getCnpj();
 	}
 
 	public String getCnpj() {
