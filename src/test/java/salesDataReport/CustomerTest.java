@@ -28,13 +28,14 @@ public class CustomerTest {
 		final String CNPJ = "10";
 		final String AREA = "Games";
 		boolean result;
-		Person<CSVCustomerData> customer = new Customer();
+		PersistantModel model = new Customer();
 		CSVCustomerData csvData = new CSVCustomerData();
 		ReflectionTestUtils.setField(csvData, "name", NAME);
 		ReflectionTestUtils.setField(csvData, "cnpj", CNPJ);
 		ReflectionTestUtils.setField(csvData, "area", AREA);
 		CSVData gen = (CSVData) csvData;
-		customer.loadCSVData(gen);
+		model.loadCSVData(gen);
+		Customer customer = (Customer) model;
 		result = csvData.getName().equals(customer.getName());
 		result &= csvData.getCnpj().equals(customer.getCnpj());
 		result &= csvData.getArea().equals(customer.getArea());
