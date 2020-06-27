@@ -7,8 +7,8 @@ public class Salesperson extends Person {
 
 	private List<Sale> sales = new ArrayList<Sale>();
 
-	public Salesperson(String name) {
-		super(name);
+	public Salesperson() {
+
 	}
 
 	public List<Sale> getSales() {
