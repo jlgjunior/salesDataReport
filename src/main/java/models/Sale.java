@@ -8,8 +8,8 @@ public class Sale {
 	private Integer id;
 	private List<Product> products = new ArrayList<Product>();
 
-	public Sale(Integer id) {
-		this.id = id;
+	public Sale() {
+		
 	}
 	
 	public Integer getId() {
