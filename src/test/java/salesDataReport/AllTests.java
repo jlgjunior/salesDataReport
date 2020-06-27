@@ -8,12 +8,13 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 @RunWith(Suite.class)
 @SuiteClasses({ CustomerTest.class, 
+				SalespersonTest.class,
 				SaleTest.class, 
 				ProductTest.class,
+				SaleProductTest.class,
 				CSVDataReaderServiceTest.class,
 				CSVSalespersonDataTest.class,
 				CSVCustomerDataTest.class,
-				SalespersonTest.class,
 				CSVSaleDataTest.class,
 				CSVDataFactoryTest.class})
 
