@@ -6,10 +6,8 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 
 import models.CSVCustomerData;
-import models.CSVData;
 import models.Customer;
 import models.Person;
-import org.junit.platform.commons.util.ReflectionUtils;
 import org.springframework.test.util.ReflectionTestUtils;
 
 public class CustomerTest {
