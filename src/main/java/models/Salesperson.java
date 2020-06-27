@@ -3,7 +3,7 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Salesperson extends Person implements PersistantModel<CSVSalespersonData> {
+public class Salesperson extends Person {
 
 	private String cpf;
 	private Float salary;
@@ -30,10 +30,11 @@ public class Salesperson extends Person implements PersistantModel<CSVSalesperso
 	}
 
 	@Override
-	public void loadCSVData(CSVSalespersonData data) {
-		name = data.getName();
-		cpf = data.getCpf();
-		salary = data.getSalary();
+	public void loadCSVData(CSVData data) {
+		CSVSalespersonData salespersonData = (CSVSalespersonData) data;
+		name = salespersonData.getName();
+		cpf = salespersonData.getCpf();
+		salary = salespersonData.getSalary();
 	}
 
 	@Override
