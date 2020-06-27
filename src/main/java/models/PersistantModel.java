@@ -1,6 +1,6 @@
 package models;
 
-public interface PersistantModel <T extends CSVData>{
+public interface PersistantModel {
 	
-	public void loadCSVData(T data);
+	public void loadCSVData(CSVData data);
 }
