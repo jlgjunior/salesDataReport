@@ -21,9 +21,11 @@ public class CSVCustomerDataTest {
 	public void getCnpjTest() {
 		final String CNPJ = "2345675434544345";
 		String[] data = {"002", CNPJ, "Jose da Silva", "Rural"};
-		CSVCustomerData customerData = new CSVCustomerData();
+		CSVData customerData = new CSVCustomerData();
+		String resultCnpj;
 		customerData.loadData(data);
-		assertEquals(CNPJ, customerData.getCnpj());
+		resultCnpj = ((CSVCustomerData) customerData).getCnpj();
+		assertEquals(CNPJ, resultCnpj);
 	}
 	
 	@Test

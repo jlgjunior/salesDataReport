@@ -1,6 +1,6 @@
 package models;
 
-public class Customer extends Person implements PersistantModel <CSVCustomerData>{
+public class Customer extends Person<CSVCustomerData>{
 
 	private String cnpj;
 	private String area;

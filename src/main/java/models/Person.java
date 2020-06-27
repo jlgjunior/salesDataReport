@@ -1,6 +1,6 @@
 package models;
 
-public abstract class Person {
+public abstract class Person<T extends CSVPersonData> implements PersistantModel<T> {
 
 	protected String name;
 	

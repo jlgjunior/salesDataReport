@@ -1,6 +1,6 @@
 package models;
 
-public class CSVCustomerData implements CSVData {
+public class CSVCustomerData extends CSVPersonData {
 
 	private String cnpj;
 	private String name;
