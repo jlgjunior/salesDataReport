@@ -14,6 +14,7 @@ public abstract class PersistantModelFactory {
 			case "003":
 				return new SaleFactory();
 		}
+		return null;
 	}
 	
 	public abstract PersistantModel createPersistantModel(CSVData data);
