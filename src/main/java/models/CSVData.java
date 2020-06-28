@@ -1,7 +1,12 @@
 package models;
 
-public interface CSVData {
+public abstract class CSVData {
 	
-	public boolean loadData(String[] data);
+	private String code;
+	
+	public abstract boolean loadData(String[] data);
 
+	public String getCode() {
+		return code;
+	}	
 }
