@@ -5,7 +5,7 @@ import java.util.List;
 
 import builders.SaleBuilder;
 
-public class Sale {
+public class Sale implements PersistantModel {
 	
 	private Integer id;
 	private List<Product> products = new ArrayList<Product>();
@@ -59,5 +59,11 @@ public class Sale {
 		} else if (!products.equals(other.products))
 			return false;
 		return true;
+	}
+
+	@Override
+	public void loadCSVData(CSVData data) {
+		// TODO Auto-generated method stub
+		
 	}
 }

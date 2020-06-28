@@ -6,7 +6,7 @@ import models.Sale;
 public class SaleBuilder {
 
 	private Integer id;
-	private String products;
+	private String[] products;
 	
 	public SaleBuilder() {
 		
@@ -21,7 +21,7 @@ public class SaleBuilder {
 		return this;
 	}
 	
-	public SaleBuilder setProducts(String products) {
+	public SaleBuilder setProducts(String[] products) {
 		this.products = products;
 		return this;
 	}
@@ -30,7 +30,7 @@ public class SaleBuilder {
 		return id;
 	}
 
-	public String getProducts() {
+	public String[] getProducts() {
 		return products;
 	}
 

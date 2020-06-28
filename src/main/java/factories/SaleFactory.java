@@ -1,9 +1,8 @@
 package factories;
 
-import builders.SalespersonBuilder;
+import builders.SaleBuilder;
 import models.CSVData;
 import models.CSVSaleData;
-import models.CSVSalespersonData;
 import models.PersistantModel;
 
 public class SaleFactory extends PersistantModelFactory {
@@ -12,8 +11,7 @@ public class SaleFactory extends PersistantModelFactory {
 	public PersistantModel createPersistantModel(CSVData data) {
 		CSVSaleData saleData = 
 				(CSVSaleData) data;
-		return new SaleBuilder()
-					.setId(saleData.getId())
+		return new SaleBuilder().setId(saleData.getId())
 					.setProducts(saleData.getProducts())			   
 					.build();
 	}
