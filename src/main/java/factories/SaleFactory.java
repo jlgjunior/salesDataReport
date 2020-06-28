@@ -8,14 +8,14 @@ import builders.SaleBuilder;
 import builders.SaleProductBuilder;
 import models.CSVData;
 import models.CSVSaleData;
-import models.PersistantModel;
 import models.Product;
+import models.Sale;
 import models.SaleProduct;
 
-public class SaleFactory extends PersistantModelFactory {
+public class SaleFactory extends PersistantModelFactory<Sale> {
 
 	@Override
-	public PersistantModel createPersistantModel(CSVData data) {
+	public Sale createPersistantModel(CSVData data) {
 		CSVSaleData saleData = 
 				(CSVSaleData) data;
 		List<SaleProduct> saleProducts = createProducts(saleData.getProducts());

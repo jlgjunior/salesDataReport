@@ -3,12 +3,12 @@ package factories;
 import builders.CustomerBuilder;
 import models.CSVCustomerData;
 import models.CSVData;
-import models.PersistantModel;
+import models.Customer;
 
-public class CustomerFactory extends PersistantModelFactory {
+public class CustomerFactory extends PersistantModelFactory<Customer> {
 
 	@Override
-	public PersistantModel createPersistantModel(CSVData data) {
+	public Customer createPersistantModel(CSVData data) {
 		CSVCustomerData customerData = 
 				(CSVCustomerData) data;
 		return new CustomerBuilder()

@@ -3,7 +3,7 @@ package factories;
 import models.CSVData;
 import models.PersistantModel;
 
-public abstract class PersistantModelFactory {
+public abstract class PersistantModelFactory <T extends PersistantModel> {
 	
 	public static PersistantModelFactory getConcreteFactory(CSVData data) {
 		switch(data.getCode()) {
@@ -17,6 +17,6 @@ public abstract class PersistantModelFactory {
 		return null;
 	}
 	
-	public abstract PersistantModel createPersistantModel(CSVData data);
+	public abstract T createPersistantModel(CSVData data);
 
 }
