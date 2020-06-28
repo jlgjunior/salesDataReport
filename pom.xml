@@ -24,7 +24,7 @@
           </descriptorRefs>
           <archive>
             <manifest>
-              <mainClass>salesReport.Main</mainClass>
+              <mainClass>salesReport.Application</mainClass>
             </manifest>
           </archive>
         </configuration>
