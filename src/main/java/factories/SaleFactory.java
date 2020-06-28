@@ -21,7 +21,7 @@ public class SaleFactory extends PersistantModelFactory {
 		List<SaleProduct> saleProducts = createProducts(saleData.getProducts());
 		return new SaleBuilder()
 					.setId(saleData.getId())
-					.setProducts(saleProducts)			   
+					.setSaleProducts(saleProducts)			   
 					.build();
 	}
 
