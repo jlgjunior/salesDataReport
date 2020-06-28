@@ -2,7 +2,7 @@ package models;
 
 public abstract class CSVData {
 	
-	private String code;
+	protected String code;
 	
 	public abstract boolean loadData(String[] data);
 

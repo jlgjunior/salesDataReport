@@ -1,6 +1,6 @@
 package models;
 
-public class CSVCustomerData extends CSVPersonData {
+public class CSVCustomerData extends CSVData {
 
 	private String cnpj;
 	private String name;
@@ -10,15 +10,10 @@ public class CSVCustomerData extends CSVPersonData {
 
 	}
 
-	public CSVCustomerData(String cnpj, String name, String area) {
-		this.cnpj = cnpj;
-		this.name = name;
-		this.area = area;
-	}
-
 	@Override
 	public boolean loadData(String[] data) {
 		try {
+			this.code = data[0];
 			this.cnpj = data[1];
 			this.name = data[2];
 			this.area = data[3];
