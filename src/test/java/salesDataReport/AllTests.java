@@ -13,10 +13,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 				ProductTest.class,
 				SaleProductTest.class,
 				CSVDataReaderServiceTest.class,
+				DataImporterServiceTest.class,
 				CSVSalespersonDataTest.class,
 				CSVCustomerDataTest.class,
 				CSVSaleDataTest.class,
-				CSVDataFactoryTest.class})
+				CSVDataFactoryTest.class,
+				SalespersonBuilderTest.class})
 
 public class AllTests {
 
