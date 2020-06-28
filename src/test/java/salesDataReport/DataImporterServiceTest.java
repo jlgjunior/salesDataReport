@@ -2,6 +2,8 @@ package salesDataReport;
 
 import org.junit.Test;
 
+import services.DataImporterService;
+
 public class DataImporterServiceTest {
 
 	@Test
