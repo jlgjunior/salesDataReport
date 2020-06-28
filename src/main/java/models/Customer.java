@@ -1,5 +1,7 @@
 package models;
 
+import builders.CustomerBuilder;
+
 public class Customer extends Person{
 
 	private String cnpj;
@@ -7,6 +9,12 @@ public class Customer extends Person{
 	
 	public Customer() {
 		
+	}
+
+	public Customer(CustomerBuilder customerBuilder) {
+		name = customerBuilder.getName();
+		cnpj = customerBuilder.getCnpj();
+		area = customerBuilder.getArea();
 	}
 
 	@Override
