@@ -35,4 +35,21 @@ public class SaleProductTest {
 			ReflectionTestUtils.setField(saleProduct, "product", product);
 			assertSame(product, saleProduct.getProduct());
 		}
+
+		@Test
+		public void getPriceTest() {
+			final Float PRICE = 148f;
+			SaleProduct saleProduct = new SaleProduct();
+			ReflectionTestUtils.setField(saleProduct, "price", PRICE);
+			assertEquals(PRICE, saleProduct.getPrice());
+		}
+		
+		@Test
+		public void getQuantityTest() {
+			final Integer QUANTITY = 148;
+			SaleProduct saleProduct = new SaleProduct();
+			ReflectionTestUtils.setField(saleProduct, "quantity", QUANTITY);
+			assertEquals(QUANTITY, saleProduct.getQuantity());
+		}
+		
 }
