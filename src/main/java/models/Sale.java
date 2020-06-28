@@ -8,26 +8,23 @@ import builders.SaleBuilder;
 public class Sale implements PersistantModel {
 	
 	private Integer id;
-	private List<Product> products = new ArrayList<Product>();
+	private List<SaleProduct> saleProducts;
 
 	public Sale() {
-		
+		saleProducts = new ArrayList<SaleProduct>();
 	}
 	
 	public Sale(SaleBuilder saleBuilder) {
 		id = saleBuilder.getId();
+		saleProducts = saleBuilder.getSaleProducts();
 	}
 
 	public Integer getId() {
 		return this.id;
 	}
 
-	public List<Product> getProducts() {
-		return this.products ;
-	}
-
-	public void addProduct(Product product) {
-		this.products.add(product);
+	public List<SaleProduct> getSaleProducts() {
+		return this.saleProducts ;
 	}
 
 	@Override
@@ -35,7 +32,7 @@ public class Sale implements PersistantModel {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((products == null) ? 0 : products.hashCode());
+		result = prime * result + ((saleProducts == null) ? 0 : saleProducts.hashCode());
 		return result;
 	}
 
@@ -53,10 +50,10 @@ public class Sale implements PersistantModel {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (products == null) {
-			if (other.products != null)
+		if (saleProducts == null) {
+			if (other.saleProducts != null)
 				return false;
-		} else if (!products.equals(other.products))
+		} else if (!saleProducts.equals(other.saleProducts))
 			return false;
 		return true;
 	}

@@ -1,12 +1,17 @@
 package salesDataReport;
 
+import static org.junit.Assert.assertSame;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import builders.SaleBuilder;
 import models.Sale;
+import models.SaleProduct;
 
 public class SaleBuilderTest {
 
@@ -27,29 +32,36 @@ public class SaleBuilderTest {
 		}
 		
 		@Test
-		public void getProductsTest() {
-			final String PRODUCTS = "1-10-100,2-30-2.50,3-40-3.10";
+		public void getSaleProductsTest() {
+			List<SaleProduct> saleProducts = new ArrayList<SaleProduct>();
+			saleProducts.add(new SaleProduct());
+			saleProducts.add(new SaleProduct());
 			SaleBuilder saleBuilder = new SaleBuilder();
-			ReflectionTestUtils.setField(saleBuilder, "products", PRODUCTS);
-			assertEquals(PRODUCTS, saleBuilder.getProducts());
+			ReflectionTestUtils.setField(saleBuilder, "saleProducts", saleProducts);
+			assertSame(saleProducts, saleBuilder.getSaleProducts());
 		}
 		
 		@Test
-		public void setCnpjTest() {
-			final String PRODUCTS = "1-10-100,2-30-2.50,3-40-3.10";
+		public void setSaleProductsTest() {
+			List<SaleProduct> saleProducts = new ArrayList<SaleProduct>();
+			saleProducts.add(new SaleProduct());
+			saleProducts.add(new SaleProduct());
 			SaleBuilder saleBuilder = new SaleBuilder();
-			saleBuilder.setProducts(PRODUCTS);
-			assertEquals(PRODUCTS, saleBuilder.getProducts());
+			saleBuilder.setSaleProducts(saleProducts);
+			assertSame(saleProducts, saleBuilder.getSaleProducts());
 		}
 		
 		@Test
 		public void buildTest() {
+			List<SaleProduct> saleProducts = new ArrayList<SaleProduct>();
+			saleProducts.add(new SaleProduct());
+			saleProducts.add(new SaleProduct());
 			final Integer ID = 1;
-			final String PRODUCTS = "1-10-100,2-30-2.50,3-40-3.10";
 			Sale sale = new Sale();
 			ReflectionTestUtils.setField(sale, "id", ID);
+			ReflectionTestUtils.setField(sale, "saleProducts", saleProducts);
 			SaleBuilder SaleBuilder = new SaleBuilder();
 			assertEquals(sale, 
-					SaleBuilder.setId(ID).setProducts(PRODUCTS).build());
+					SaleBuilder.setId(ID).setSaleProducts(saleProducts).build());
 		}
 }

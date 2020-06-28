@@ -26,7 +26,7 @@ public class SaleFactory extends PersistantModelFactory {
 	}
 
 	private List<SaleProduct> createProducts(String[] products) {
-		List<SaleProduct> saleProductsList = new ArrayList();
+		List<SaleProduct> saleProductsList = new ArrayList<SaleProduct>();
 		for (String productString : products) {
 			String[] productInfo = productString.split("-");
 			Integer id = Integer.valueOf(productInfo[0]);

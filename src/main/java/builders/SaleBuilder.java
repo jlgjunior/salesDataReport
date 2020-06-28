@@ -1,15 +1,19 @@
 package builders;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import models.Sale;
+import models.SaleProduct;
 
 
 public class SaleBuilder {
 
 	private Integer id;
-	private String[] products;
+	private List<SaleProduct> saleProducts;
 	
 	public SaleBuilder() {
-		
+		this.saleProducts = new ArrayList<SaleProduct>();
 	}
 
 	public Sale build() {
@@ -21,8 +25,8 @@ public class SaleBuilder {
 		return this;
 	}
 	
-	public SaleBuilder setProducts(String[] products) {
-		this.products = products;
+	public SaleBuilder setSaleProducts(List<SaleProduct> saleProducts) {
+		this.saleProducts = saleProducts;
 		return this;
 	}
 
@@ -30,8 +34,8 @@ public class SaleBuilder {
 		return id;
 	}
 
-	public String[] getProducts() {
-		return products;
+	public List<SaleProduct> getSaleProducts() {
+		return saleProducts;
 	}
 
 	@Override
@@ -39,7 +43,7 @@ public class SaleBuilder {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((products == null) ? 0 : products.hashCode());
+		result = prime * result + ((saleProducts == null) ? 0 : saleProducts.hashCode());
 		return result;
 	}
 
@@ -57,10 +61,10 @@ public class SaleBuilder {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (products == null) {
-			if (other.products != null)
+		if (saleProducts == null) {
+			if (other.saleProducts != null)
 				return false;
-		} else if (!products.equals(other.products))
+		} else if (!saleProducts.equals(other.saleProducts))
 			return false;
 		return true;
 	}
