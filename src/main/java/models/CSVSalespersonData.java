@@ -1,6 +1,6 @@
 package models;
 
-public class CSVSalespersonData implements CSVData {
+public class CSVSalespersonData extends CSVData {
 
 	private String cpf;
 	private String name;
@@ -10,15 +10,10 @@ public class CSVSalespersonData implements CSVData {
 
 	}
 	
-	public CSVSalespersonData(String cpf, String name, Float salary) {
-		this.cpf = cpf;
-		this.name = name;
-		this.salary = salary;
-	}
-	
 	@Override
 	public boolean loadData(String[] data) {
 		try {
+			this.code = data[0];
 			this.cpf = data[1];
 			this.name = data[2];
 			this.salary = Float.valueOf(data[3]);
