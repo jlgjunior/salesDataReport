@@ -1,4 +1,4 @@
-package utils;
+package factories;
 
 import org.springframework.stereotype.Component;
 

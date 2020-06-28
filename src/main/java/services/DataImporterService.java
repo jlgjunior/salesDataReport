@@ -42,6 +42,15 @@ public class DataImporterService {
 								.setArea(customerData.getArea())
 								.build();
 					break;
+				case "003":
+					CSVCustomerData customerData = 
+							(CSVCustomerData) csvData;
+					model = new CustomerBuilder()
+								.setCnpj(customerData.getCnpj())
+								.setName(customerData.getName())			   
+								.setArea(customerData.getArea())
+								.build();
+					break;
 			}	
 		}
 	}

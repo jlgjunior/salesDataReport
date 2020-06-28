@@ -7,11 +7,11 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import factories.CSVDataFactory;
 import models.CSVCustomerData;
 import models.CSVSaleData;
 import models.CSVSalespersonData;
 import services.CSVDataReaderService;
-import utils.CSVDataFactory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringBootConfiguration;

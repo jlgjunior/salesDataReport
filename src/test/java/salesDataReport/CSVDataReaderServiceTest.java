@@ -12,10 +12,10 @@ import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import factories.CSVDataFactory;
 import models.CSVData;
 import models.CSVSalespersonData;
 import services.CSVDataReaderService;
-import utils.CSVDataFactory;
 
 @SpringBootTest(classes= {CSVDataFactory.class, CSVDataReaderService.class})
 @RunWith(SpringRunner.class)
