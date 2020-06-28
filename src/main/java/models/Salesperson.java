@@ -3,6 +3,8 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import builders.SalespersonBuilder;
+
 public class Salesperson extends Person {
 
 	private String cpf;
@@ -11,6 +13,12 @@ public class Salesperson extends Person {
 
 	public Salesperson() {
 
+	}
+
+	public Salesperson(SalespersonBuilder salespersonBuilder) {
+		cpf = salespersonBuilder.getCpf();
+		name = salespersonBuilder.getName();
+		salary = salespersonBuilder.getSalary();
 	}
 
 	public String getCpf() {
