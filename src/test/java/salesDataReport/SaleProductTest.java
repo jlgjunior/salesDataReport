@@ -1,10 +1,13 @@
 package salesDataReport;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertSame;
 
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
+import models.Product;
+import models.Sale;
 import models.SaleProduct;
 
 public class SaleProductTest {
@@ -15,5 +18,21 @@ public class SaleProductTest {
 			SaleProduct saleProduct = new SaleProduct();
 			ReflectionTestUtils.setField(saleProduct, "id", ID);
 			assertEquals(ID, saleProduct.getId());
+		}
+		
+		@Test
+		public void getSaleTest() {
+			Sale sale = new Sale();
+			SaleProduct saleProduct = new SaleProduct();
+			ReflectionTestUtils.setField(saleProduct, "sale", sale);
+			assertSame(sale, saleProduct.getSale());
+		}
+		
+		@Test
+		public void getProductTest() {
+			Product product = new Product();
+			SaleProduct saleProduct = new SaleProduct();
+			ReflectionTestUtils.setField(saleProduct, "product", product);
+			assertSame(product, saleProduct.getProduct());
 		}
 }
