@@ -6,6 +6,7 @@ import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import builders.SalespersonBuilder;
+import models.Salesperson;
 
 public class SalespersonBuilderTest {
 
@@ -55,5 +56,19 @@ public class SalespersonBuilderTest {
 		SalespersonBuilder salespersonBuilder = new SalespersonBuilder();
 		salespersonBuilder.setSalary(SALARY);
 		assertEquals(SALARY, salespersonBuilder.getSalary());
+	}
+	
+	@Test
+	public void buildTest() {
+		final Float SALARY = 9038f;
+		final String CPF = "01283219038";
+		final String NAME = "Bob";
+		Salesperson salesperson = new Salesperson();
+		ReflectionTestUtils.setField(salesperson, "cpf", CPF);
+		ReflectionTestUtils.setField(salesperson, "name", NAME);
+		ReflectionTestUtils.setField(salesperson, "salary", SALARY);
+		SalespersonBuilder salespersonBuilder = new SalespersonBuilder();
+		assertEquals(salesperson, 
+				     salespersonBuilder.setCpf(CPF).setName(NAME).setSalary(SALARY).build());
 	}
 }
