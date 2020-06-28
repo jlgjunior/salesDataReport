@@ -2,6 +2,7 @@ package services;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Service;
 
 import factories.PersistantModelFactory;
 import models.CSVData;
@@ -13,6 +14,7 @@ import repositories.CustomerRepository;
 import repositories.SaleRepository;
 import repositories.SalespersonRepository;
 
+@Service
 public class DataImporterService {
 
 	@Autowired
