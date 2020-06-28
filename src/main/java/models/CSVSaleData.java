@@ -2,7 +2,7 @@ package models;
 
 import java.util.Arrays;
 
-public class CSVSaleData implements CSVData {
+public class CSVSaleData extends CSVData {
 
 	private Integer id;
 	private String[] products;
@@ -15,6 +15,7 @@ public class CSVSaleData implements CSVData {
 	@Override
 	public boolean loadData(String[] data) {
 		try {
+			this.code = data[0];
 			this.id = Integer.valueOf(data[1]);
 			this.products = data[2].replace("[", "")
 					               .replace("]", "")
