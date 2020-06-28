@@ -11,7 +11,38 @@ public class SalespersonBuilder {
 	public SalespersonBuilder() {
 		
 	}
+
+	public Salesperson build() {
+		return new Salesperson(this);
+	}
 	
+	public SalespersonBuilder setName(String name) {
+		this.name = name;
+		return this;
+	}
+	
+	public SalespersonBuilder setCpf(String cpf) {
+		this.cpf = cpf;
+		return this;
+	}
+	
+	public SalespersonBuilder setSalary(Float salary) {
+		this.salary = salary;
+		return this;
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public String getCpf() {
+		return cpf;
+	}
+
+	public Float getSalary() {
+		return salary;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -48,36 +79,4 @@ public class SalespersonBuilder {
 			return false;
 		return true;
 	}
-
-	public Salesperson build() {
-		return new Salesperson(this);
-	}
-	
-	public SalespersonBuilder setName(String name) {
-		this.name = name;
-		return this;
-	}
-	
-	public SalespersonBuilder setCpf(String cpf) {
-		this.cpf = cpf;
-		return this;
-	}
-	
-	public SalespersonBuilder setSalary(Float salary) {
-		this.salary = salary;
-		return this;
-	}
-
-	public String getName() {
-		return name;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public Float getSalary() {
-		return salary;
-	}
-	
 }
