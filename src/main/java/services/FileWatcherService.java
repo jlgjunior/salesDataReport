@@ -11,8 +11,6 @@ import java.nio.file.WatchEvent;
 import java.nio.file.WatchKey;
 import java.nio.file.WatchService;
 
-import javax.annotation.PostConstruct;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -39,7 +37,7 @@ public class FileWatcherService {
 		}
 	}
 	
-	public void watch() {
+	public void watch() throws IOException {
 		processCurrentFiles();
 		while(true) {
 			WatchKey watchKey;
