@@ -3,6 +3,8 @@ package models;
 public class SaleProduct implements PersistantModel {
 
 	private Integer id;
+	private Float price;
+	private Integer quantity;
 	private Sale sale;
 	private Product product;
 	
@@ -21,6 +23,14 @@ public class SaleProduct implements PersistantModel {
 
 	public Product getProduct() {
 		return product;
+	}
+
+	public Float getPrice() {
+		return price;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
 	}
 
 }
