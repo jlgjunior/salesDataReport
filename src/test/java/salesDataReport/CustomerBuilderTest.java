@@ -27,7 +27,7 @@ public class CustomerBuilderTest {
 		}
 		
 		@Test
-		public void getCpfTest() {
+		public void getCnpjTest() {
 			final String CNPJ = "01283219038";
 			CustomerBuilder customerBuilder = new CustomerBuilder();
 			ReflectionTestUtils.setField(customerBuilder, "cnpj", CNPJ);
@@ -35,7 +35,7 @@ public class CustomerBuilderTest {
 		}
 		
 		@Test
-		public void setCpfTest() {
+		public void setCnpjTest() {
 			final String CNPJ = "01283219038";
 			CustomerBuilder customerBuilder = new CustomerBuilder();
 			customerBuilder.setCnpj(CNPJ);
@@ -43,7 +43,7 @@ public class CustomerBuilderTest {
 		}
 
 		@Test
-		public void getSalaryTest() {
+		public void getAreaTest() {
 			final String AREA = "51";
 			CustomerBuilder customerBuilder = new CustomerBuilder();
 			ReflectionTestUtils.setField(customerBuilder, "area", AREA);
@@ -51,11 +51,11 @@ public class CustomerBuilderTest {
 		}
 		
 		@Test
-		public void setSalaryTest() {
+		public void setAreaTest() {
 			final String AREA = "51";
 			CustomerBuilder customerBuilder = new CustomerBuilder();
 			customerBuilder.setArea(AREA);
-			assertEquals(AREA, customerBuilder.getSalary());
+			assertEquals(AREA, customerBuilder.getArea());
 		}
 		
 		@Test
@@ -71,6 +71,4 @@ public class CustomerBuilderTest {
 			assertEquals(customer, 
 					customerBuilder.setCnpj(CNPJ).setName(NAME).setArea(AREA).build());
 		}
-	}
-
 }
