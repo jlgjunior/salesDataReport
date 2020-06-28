@@ -5,7 +5,7 @@ import models.Product;
 
 public class ProductBuilder {
 
-	private Integer id;
+	private Long id;
 	
 	public ProductBuilder() {
 		
@@ -15,12 +15,12 @@ public class ProductBuilder {
 		return new Product(this);
 	}
 	
-	public ProductBuilder setId(Integer id) {
+	public ProductBuilder setId(Long id) {
 		this.id = id;
 		return this;
 	}
 	
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 

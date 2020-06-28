@@ -12,7 +12,7 @@ public class ProductBuilderTest {
 
 		@Test
 		public void getIdTest() {
-			final Integer ID = 1;
+			final Long ID = 1L;
 			ProductBuilder productBuilder = new ProductBuilder();
 			ReflectionTestUtils.setField(productBuilder, "id", ID);
 			assertEquals(ID, productBuilder.getId());
@@ -20,7 +20,7 @@ public class ProductBuilderTest {
 		
 		@Test
 		public void setIdTest() {
-			final Integer ID = 1;
+			final Long ID = 1L;
 			ProductBuilder productBuilder = new ProductBuilder();
 			productBuilder.setId(ID);
 			assertEquals(ID, productBuilder.getId());
@@ -28,7 +28,7 @@ public class ProductBuilderTest {
 		
 		@Test
 		public void buildTest() {
-			final Integer ID = 1;
+			final Long ID = 1L;
 			Product product = new Product();
 			ReflectionTestUtils.setField(product, "id", ID);
 			ProductBuilder productBuilder = new ProductBuilder();

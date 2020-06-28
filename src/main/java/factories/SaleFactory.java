@@ -33,7 +33,7 @@ public class SaleFactory extends PersistantModelFactory<Sale> {
 		List<SaleProduct> saleProductsList = new ArrayList<SaleProduct>();
 		for (String productString : products) {
 			String[] productInfo = productString.split("-");
-			Integer id = Integer.valueOf(productInfo[0]);
+			Long id = Long.valueOf(productInfo[0]);
 			Integer quantity = Integer.valueOf(productInfo[1]);
 			Float price = Float.valueOf(productInfo[2]);
 			Product product  = new ProductBuilder()

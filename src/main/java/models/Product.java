@@ -1,10 +1,19 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import builders.ProductBuilder;
 
+@Entity
 public class Product {
 
-	private Integer id;
+	@Id
+	private Long id;
+	@ManyToOne
+	@JoinColumn(name="sale_id")
 	private Sale sale;
 	
 	public Product() {
@@ -15,7 +24,7 @@ public class Product {
 		id = productBuilder.getId();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 
