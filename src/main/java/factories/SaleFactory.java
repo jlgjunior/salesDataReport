@@ -14,6 +14,10 @@ import models.SaleProduct;
 
 public class SaleFactory extends PersistantModelFactory<Sale> {
 
+	public SaleFactory() {
+	
+	}
+	
 	@Override
 	public Sale createPersistantModel(CSVData data) {
 		CSVSaleData saleData = 
