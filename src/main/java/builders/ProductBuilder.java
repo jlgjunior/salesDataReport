@@ -1,26 +1,27 @@
-package models;
+package builders;
 
-import builders.ProductBuilder;
+import models.Product;
 
-public class Product {
+
+public class ProductBuilder {
 
 	private Integer id;
-	private Sale sale;
 	
-	public Product() {
+	public ProductBuilder() {
 		
 	}
 
-	public Product(ProductBuilder productBuilder) {
-		id = productBuilder.getId();
+	public Product build() {
+		return new Product(this);
 	}
-
+	
+	public ProductBuilder setId(Integer id) {
+		this.id = id;
+		return this;
+	}
+	
 	public Integer getId() {
-		return this.id;
-	}
-
-	public Sale getSale() {
-		return this.sale;
+		return id;
 	}
 
 	@Override
@@ -28,7 +29,6 @@ public class Product {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((sale == null) ? 0 : sale.hashCode());
 		return result;
 	}
 
@@ -40,16 +40,11 @@ public class Product {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Product other = (Product) obj;
+		ProductBuilder other = (ProductBuilder) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
-			return false;
-		if (sale == null) {
-			if (other.sale != null)
-				return false;
-		} else if (!sale.equals(other.sale))
 			return false;
 		return true;
 	}
