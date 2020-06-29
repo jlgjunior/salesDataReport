@@ -8,14 +8,16 @@ import builders.SalespersonBuilder;
 
 public class Salesperson extends Person<Salesperson> {
 
-	private Long id;
 	private String cpf;
 	private Float salary;
 	private Float totalSold;
 	private List<Sale> sales = new ArrayList<Sale>();
 
 	public Salesperson() {
-
+		name = "";
+		cpf = "";
+		salary = 0F;
+		totalSold = 0F;
 	}
 
 	public Salesperson(SalespersonBuilder salespersonBuilder) {
@@ -48,6 +50,8 @@ public class Salesperson extends Person<Salesperson> {
 
 	@Override
 	public int compareTo(Salesperson anotherSalesperson) {
+		if (anotherSalesperson == null)
+			return 0;
 		return totalSold.compareTo(anotherSalesperson.getTotalSold());
 	}
 	
@@ -65,11 +69,19 @@ public class Salesperson extends Person<Salesperson> {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((salary == null) ? 0 : salary.hashCode());
 		result = prime * result + ((sales == null) ? 0 : sales.hashCode());
 		result = prime * result + ((totalSold == null) ? 0 : totalSold.hashCode());
 		return result;
+	}
+
+	public boolean worseSellerThan(Salesperson worstSalesperson) {
+		if (worstSalesperson == null) {
+			return false;
+		}
+		else {
+			return worstSalesperson.getTotalSold() > totalSold;
+		}	
 	}
 
 	@Override
@@ -85,11 +97,6 @@ public class Salesperson extends Person<Salesperson> {
 			if (other.cpf != null)
 				return false;
 		} else if (!cpf.equals(other.cpf))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
 			return false;
 		if (salary == null) {
 			if (other.salary != null)
@@ -107,15 +114,5 @@ public class Salesperson extends Person<Salesperson> {
 		} else if (!totalSold.equals(other.totalSold))
 			return false;
 		return true;
-	}
-
-	public boolean worseSellerThan(Salesperson worstSalesperson) {
-		if (worstSalesperson == null) {
-			return false;
-		}
-		else {
-			return worstSalesperson.getTotalSold() > totalSold;
-		}
-		
 	}
 }

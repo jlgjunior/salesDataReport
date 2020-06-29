@@ -9,7 +9,9 @@ public class Product {
 	private Float price;
 	
 	public Product() {
-		
+		id = 0L;
+		quantity = 0;
+		price = 0F;
 	}
 
 	public Product(ProductBuilder productBuilder) {

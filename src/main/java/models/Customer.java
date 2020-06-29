@@ -10,7 +10,9 @@ public class Customer extends Person<Customer>{
 	private String area;
 	
 	public Customer() {
-		
+		name = "";
+		cnpj = "";
+		area = "";
 	}
 
 	public Customer(CustomerBuilder customerBuilder) {

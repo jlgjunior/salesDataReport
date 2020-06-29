@@ -10,7 +10,10 @@ public class Report {
 	private String worstSalespersonName;
 	
 	public Report() {
-		
+		customersCount = 0;
+		salespeopleCount = 0;
+		mostExpensiveSaleId = null;
+		worstSalespersonName = "No salesperson found";
 	}
 	
 	public Report(ReportBuilder reportBuilder) {
@@ -74,5 +77,14 @@ public class Report {
 		} else if (!worstSalespersonName.equals(other.worstSalespersonName))
 			return false;
 		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Report [customersCount=" + customersCount + ", salespeopleCount=" + salespeopleCount
+				+ ", mostExpensiveSaleId=" + mostExpensiveSaleId + ", worstSalespersonName=" + worstSalespersonName
+				+ "]";
 	}	
+	
+	
 }

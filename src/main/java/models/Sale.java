@@ -14,6 +14,9 @@ public class Sale implements PersistantModel<Sale> {
 	private List<Product> products;
 
 	public Sale() {
+		id = 0L;
+		salespersonName = "";
+		saleValue = 0F;
 		products = new ArrayList<Product>();
 	}
 	
