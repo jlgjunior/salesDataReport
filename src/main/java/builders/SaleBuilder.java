@@ -9,7 +9,7 @@ import models.SaleProduct;
 
 public class SaleBuilder {
 
-	private Integer id;
+	private Long id;
 	private List<SaleProduct> saleProducts;
 	
 	public SaleBuilder() {
@@ -20,7 +20,7 @@ public class SaleBuilder {
 		return new Sale(this);
 	}
 	
-	public SaleBuilder setId(Integer id) {
+	public SaleBuilder setId(Long id) {
 		this.id = id;
 		return this;
 	}
@@ -30,7 +30,7 @@ public class SaleBuilder {
 		return this;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 

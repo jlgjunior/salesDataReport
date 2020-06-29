@@ -4,7 +4,7 @@ import java.util.Arrays;
 
 public class CSVSaleData extends CSVData {
 
-	private Integer id;
+	private Long id;
 	private String[] products;
 	private String salespersonName;
 	
@@ -16,7 +16,7 @@ public class CSVSaleData extends CSVData {
 	public boolean loadData(String[] data) {
 		try {
 			this.code = data[0];
-			this.id = Integer.valueOf(data[1]);
+			this.id = Long.valueOf(data[1]);
 			this.products = data[2].replace("[", "")
 					               .replace("]", "")
 					               .split(",");
@@ -28,7 +28,7 @@ public class CSVSaleData extends CSVData {
 		}
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 

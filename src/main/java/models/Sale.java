@@ -3,11 +3,17 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
 import builders.SaleBuilder;
 
+@Entity
 public class Sale implements PersistantModel {
 	
-	private Integer id;
+	@Id
+	private Long id;
 	private List<SaleProduct> saleProducts;
 
 	public Sale() {
@@ -19,7 +25,7 @@ public class Sale implements PersistantModel {
 		saleProducts = saleBuilder.getSaleProducts();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return this.id;
 	}
 

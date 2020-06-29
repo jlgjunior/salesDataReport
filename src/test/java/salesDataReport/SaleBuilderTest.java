@@ -25,7 +25,7 @@ public class SaleBuilderTest {
 		
 		@Test
 		public void setIdTest() {
-			final Integer ID = 1;
+			final Long ID = 1L;
 			SaleBuilder saleBuilder = new SaleBuilder();
 			saleBuilder.setId(ID);
 			assertEquals(ID, saleBuilder.getId());
@@ -56,7 +56,7 @@ public class SaleBuilderTest {
 			List<SaleProduct> saleProducts = new ArrayList<SaleProduct>();
 			saleProducts.add(new SaleProduct());
 			saleProducts.add(new SaleProduct());
-			final Integer ID = 1;
+			final Long ID = 1L;
 			Sale sale = new Sale();
 			ReflectionTestUtils.setField(sale, "id", ID);
 			ReflectionTestUtils.setField(sale, "saleProducts", saleProducts);
