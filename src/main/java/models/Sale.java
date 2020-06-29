@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
 
 import builders.SaleBuilder;
 
@@ -14,6 +15,8 @@ public class Sale implements PersistantModel {
 	
 	@Id
 	private Long id;
+	@OneToMany
+	@JoinColumn(name="sale_id")
 	private List<SaleProduct> saleProducts;
 
 	public Sale() {
