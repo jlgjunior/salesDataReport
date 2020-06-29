@@ -27,6 +27,7 @@ public class CSVDataFactoryTest {
 	@Test
 	public void createCSVDataTest() {
 		String filename = getClass().getClassLoader().getResource("example").getFile();
+		csvDataReaderService.setSeparator('ç');
 		if (csvDataReaderService.loadCSVFile(filename)) {
 			assertTrue(csvDataReaderService.getNextCSVData() instanceof CSVSalespersonData);
 			assertTrue(csvDataReaderService.getNextCSVData() instanceof CSVSalespersonData);

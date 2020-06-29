@@ -28,6 +28,7 @@ public class CSVDataReaderServiceTest {
 	public void unloadTest() {
 		String filename;
 		filename = getClass().getClassLoader().getResource("example").getFile();
+		csvDataReaderService.setSeparator('ç');
 		csvDataReaderService.loadCSVFile(filename);
 		csvDataReaderService.unload();
 		assertNull(csvDataReaderService.getNextCSVData());
@@ -37,6 +38,7 @@ public class CSVDataReaderServiceTest {
 	public void loadCSVFileTest() {
 		String filename;
 		filename = getClass().getClassLoader().getResource("example").getFile();
+		csvDataReaderService.setSeparator('ç');
 		assertTrue(csvDataReaderService.loadCSVFile(filename));
 	}
 	
@@ -48,6 +50,7 @@ public class CSVDataReaderServiceTest {
 		CSVData salespersonData = new CSVSalespersonData();
 		salespersonData.loadData(data);
 		filename = getClass().getClassLoader().getResource("example").getFile();
+		csvDataReaderService.setSeparator('ç');
 		if (csvDataReaderService.loadCSVFile(filename)) {
 			resultData = csvDataReaderService.getNextCSVData();
 			assertEquals(salespersonData, resultData);
@@ -68,6 +71,7 @@ public class CSVDataReaderServiceTest {
 			fail("Should not have a next line");
 		}
 		filename = getClass().getClassLoader().getResource("example").getFile();
+		csvDataReaderService.setSeparator('ç');
 		if (csvDataReaderService.loadCSVFile(filename)) {
 			assertTrue(((boolean)hasNextLine.invoke(csvDataReaderService, ARGS)));
 		} else {
