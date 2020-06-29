@@ -79,7 +79,7 @@ public class Salesperson extends Person<Salesperson> {
 
 	public boolean worseSellerThan(Salesperson worstSalesperson) {
 		if (worstSalesperson == null) {
-			return false;
+			return true;
 		}
 		else {
 			return worstSalesperson.getTotalSold() > totalSold;

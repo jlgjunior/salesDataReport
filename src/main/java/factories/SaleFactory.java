@@ -25,6 +25,7 @@ public class SaleFactory extends PersistantModelFactory<Sale> {
 		return new SaleBuilder()
 					.setId(saleData.getId())
 					.setProducts(products)
+					.setSalespersonName(saleData.getSalespersonName())
 					.setSaleValue(saleValue)
 					.build();
 	}
