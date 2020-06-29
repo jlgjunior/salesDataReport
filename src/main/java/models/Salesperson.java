@@ -3,12 +3,24 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+
 import builders.SalespersonBuilder;
 
+@Entity
 public class Salesperson extends Person {
 
+	@Id
+	@GeneratedValue
+	private Long id;
 	private String cpf;
 	private Float salary;
+	@OneToMany
+	@JoinColumn(name="salesperson_id")
 	private List<Sale> sales = new ArrayList<Sale>();
 
 	public Salesperson() {
@@ -50,6 +62,7 @@ public class Salesperson extends Person {
 		final int prime = 31;
 		int result = super.hashCode();
 		result = prime * result + ((cpf == null) ? 0 : cpf.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((salary == null) ? 0 : salary.hashCode());
 		result = prime * result + ((sales == null) ? 0 : sales.hashCode());
 		return result;
@@ -69,6 +82,11 @@ public class Salesperson extends Person {
 				return false;
 		} else if (!cpf.equals(other.cpf))
 			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
 		if (salary == null) {
 			if (other.salary != null)
 				return false;
@@ -81,5 +99,4 @@ public class Salesperson extends Person {
 			return false;
 		return true;
 	}
-
 }
