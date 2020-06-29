@@ -1,9 +1,8 @@
 package services;
 
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.SortedSet;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import repositories.IRepository;
 @Service
 public class ReportService {
 
-	private Path outputFolder;
 	@Autowired
 	FileSystemManagerService fileSystemManagerService;
 	@Autowired
@@ -52,8 +50,9 @@ public class ReportService {
 		Long mostExpensiveSaleId = 
 				sales.size() > 0? sales.first().getId() : null;
 
-		String worstSalespersonName = 
-				salespeople.size() > 0? salespeople.first().getName() : null;
+		Salesperson salesperson = getWorstSalesperson();	
+		String worstSalespersonName =
+		               salesperson != null? salesperson.getName() : null;
 	
 		Report report = new ReportBuilder()
 							.setCustomersCount(customersCount)
@@ -61,6 +60,36 @@ public class ReportService {
 							.setMostExpensiveSaleId(mostExpensiveSaleId)
 							.setWorstSalespersonName(worstSalespersonName)
 							.build();
-		reportRepository.save(report);
+		String fileName = Paths.get(filepath).getFileName().toString();
+		reportRepository.saveToFile(report, fileName);
+		clear();
+	}
+
+	//It could be more efficient if Sales were to be linked with
+	//salesperson during CSV data reading, but in the specification
+	//there was no guarantee the data would be ordered
+	private Salesperson getWorstSalesperson() {
+		Salesperson worstSalesperson = null;
+		Map<String, Salesperson> salespeople = new HashMap<String, Salesperson>();
+		SortedSet<Salesperson> salespeopleData = salespersonRepository.findAll();
+		for (Salesperson salesperson : salespeopleData) {
+			salespeople.put(salesperson.getName(), salesperson);
+		}
+		for (Sale sale : saleRepository.findAll()) {
+			Salesperson salesperson = 
+					salespeople.get(sale.getSalespersonName());
+			salesperson.addSale(sale);
+			if (salesperson.worseSellerThan(worstSalesperson)) {
+				worstSalesperson = salesperson;
+			}
+		}
+		return worstSalesperson;
+	}
+
+	private void clear() {
+		saleRepository.clear();
+		salespersonRepository.clear();
+		customerRepository.clear();
+		reportRepository.clear();
 	}										
 }
