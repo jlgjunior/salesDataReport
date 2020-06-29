@@ -11,7 +11,7 @@ public class ProductTest {
 		
 	@Test
 	public void getIdTest() {
-		final Integer ID = 11;
+		final Long ID = 11L;
 		Product product = new Product();
 		ReflectionTestUtils.setField(product, "id", ID);
 		assertEquals(ID, product.getId());

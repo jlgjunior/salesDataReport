@@ -31,7 +31,7 @@ public class CSVSaleDataTest {
 
 	@Test
 	public void getIdTest() {
-		final Integer ID = 10;
+		final Long ID = 10L;
 		String[] data = {"003", "10", 
 				         "[1-10-100,2-30-2.50,3-40-3.10]", "Pedro"};
 		CSVSaleData saleData = new CSVSaleData();
