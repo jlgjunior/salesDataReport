@@ -48,7 +48,12 @@ public class FileWatcherService {
 				while ((watchKey = watchService.take()) != null) {
 					for (WatchEvent<?> event : watchKey.pollEvents()) {
 						String filepath = event.context().toString();
-						if (!fileSystemManagerService.isEmptyFile(filepath)) {
+						if (!filepath.startsWith(".")) {
+							String inputDirectory = fileSystemManagerService
+								                    .getInputFolder()
+								                    .toString();
+							filepath = fileSystemManagerService
+								     .combinePath(inputDirectory, filepath).toString();
 							reportService.generateReport(filepath);
 						}
 					}
