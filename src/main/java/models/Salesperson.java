@@ -21,6 +21,7 @@ public class Salesperson extends Person<Salesperson> {
 	}
 
 	public Salesperson(SalespersonBuilder salespersonBuilder) {
+		name = salespersonBuilder.getName();
 		cpf = salespersonBuilder.getCpf();
 		name = salespersonBuilder.getName();
 		salary = salespersonBuilder.getSalary();
