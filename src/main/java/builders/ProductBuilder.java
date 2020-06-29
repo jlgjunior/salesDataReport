@@ -6,6 +6,8 @@ import models.Product;
 public class ProductBuilder {
 
 	private Long id;
+	private Integer quantity;
+	private Float price;
 	
 	public ProductBuilder() {
 		
@@ -24,11 +26,31 @@ public class ProductBuilder {
 		return id;
 	}
 
+	public ProductBuilder setQuantity(Integer quantity) {
+		this.quantity = quantity;
+		return this;
+	}
+	
+	public ProductBuilder setPrice(Float price) {
+		this.price = price;
+		return this;
+	}
+
+	public Integer getQuantity() {
+		return quantity;
+	}
+
+	public Float getPrice() {
+		return price;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((price == null) ? 0 : price.hashCode());
+		result = prime * result + ((quantity == null) ? 0 : quantity.hashCode());
 		return result;
 	}
 
@@ -45,6 +67,16 @@ public class ProductBuilder {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
+			return false;
+		if (price == null) {
+			if (other.price != null)
+				return false;
+		} else if (!price.equals(other.price))
+			return false;
+		if (quantity == null) {
+			if (other.quantity != null)
+				return false;
+		} else if (!quantity.equals(other.quantity))
 			return false;
 		return true;
 	}
