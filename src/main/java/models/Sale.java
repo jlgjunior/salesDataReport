@@ -25,7 +25,7 @@ public class Sale implements PersistantModel {
 		return id;
 	}
 
-	public List<Product> getSaleProducts() {
+	public List<Product> getProducts() {
 		return products ;
 	}
 

@@ -20,8 +20,8 @@ public class SaleFactory extends PersistantModelFactory<Sale> {
 	public Sale createPersistantModel(CSVData data) {
 		CSVSaleData saleData = 
 				(CSVSaleData) data;
-		Float saleValue = 0f;
-		List<Product> products = createProducts(saleData.getProducts(), saleValue);
+		List<Product> products = new ArrayList<Product>();
+		Float saleValue = calculateValue(saleData.getProducts(), products);
 		return new SaleBuilder()
 					.setId(saleData.getId())
 					.setProducts(products)
@@ -29,8 +29,8 @@ public class SaleFactory extends PersistantModelFactory<Sale> {
 					.build();
 	}
 
-	private List<Product> createProducts(String[] products, Float saleValue) {
-		List<Product> saleProductsList = new ArrayList<Product>();
+	private Float calculateValue(String[] products, List<Product> returnList) {
+		Float saleValue = 0f;
 		for (String productString : products) {
 			String[] productInfo = productString.split("-");
 			Long id = Long.valueOf(productInfo[0]);
@@ -42,9 +42,9 @@ public class SaleFactory extends PersistantModelFactory<Sale> {
 								.setPrice(price)
 								.build();
 			saleValue += (product.getPrice() * product.getQuantity());
-			saleProductsList.add(product);
+			returnList.add(product);
 		}
-		return saleProductsList;
+		return saleValue;
 	}
 
 }
