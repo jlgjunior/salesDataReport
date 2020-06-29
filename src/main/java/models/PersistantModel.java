@@ -1,6 +1,5 @@
 package models;
 
-public interface PersistantModel {
-	
-	public void loadCSVData(CSVData data);
+public interface PersistantModel<T> extends Comparable<T>{
+
 }

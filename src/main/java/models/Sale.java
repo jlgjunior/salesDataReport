@@ -1,11 +1,12 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import builders.SaleBuilder;
 
-public class Sale implements PersistantModel {
+public class Sale implements PersistantModel<Sale> {
 	
 	private Long id;
 	private String salespersonName;
@@ -31,18 +32,31 @@ public class Sale implements PersistantModel {
 		return products ;
 	}
 
-	@Override
-	public void loadCSVData(CSVData data) {
-		// TODO Auto-generated method stub
-		
-	}
-
 	public Float getSaleValue() {
 		return saleValue;
 	}
 
 	public String getSalespersonName() {
 		return salespersonName;
+	}
+	
+
+	@Override
+	public int compareTo(Sale anotherSale) {
+		return saleValue.compareTo(anotherSale.getSaleValue());
+	}
+	
+	//As you can see, the compareTo result is multiplied by
+	//-1, since the values returned are 1, 0 and -1, and we
+	//want the reverse order to be ordered from the most 
+	//expensive sale to the cheapest one
+	public static Comparator<Sale> getComparator() {
+		return new Comparator<Sale>() {
+            @Override
+            public int compare(Sale sale1, Sale sale2) {
+                return sale1.compareTo(sale2)*(-1);
+            }
+        };
 	}
 
 	@Override

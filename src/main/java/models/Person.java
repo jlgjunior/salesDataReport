@@ -1,6 +1,6 @@
 package models;
 
-public abstract class Person implements PersistantModel {
+public abstract class Person<T extends Person> implements PersistantModel<T> {
 
 	protected String name;
 	

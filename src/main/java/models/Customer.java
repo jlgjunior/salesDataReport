@@ -1,8 +1,10 @@
 package models;
 
+import java.util.Comparator;
+
 import builders.CustomerBuilder;
 
-public class Customer extends Person{
+public class Customer extends Person<Customer>{
 
 	private String cnpj;
 	private String area;
@@ -17,20 +19,26 @@ public class Customer extends Person{
 		area = customerBuilder.getArea();
 	}
 
-	@Override
-	public void loadCSVData(CSVData data) {
-		CSVCustomerData customerData = (CSVCustomerData) data;
-		this.area = customerData.getArea();
-		this.name = customerData.getName();
-		this.cnpj = customerData.getCnpj();
-	}
-
 	public String getCnpj() {
 		return cnpj;
 	}
 
 	public String getArea() {
 		return area;
+	}
+
+	@Override
+	public int compareTo(Customer anotherCustomer) {
+		return area.compareTo(anotherCustomer.getArea());
+	}
+	
+	public static Comparator<Customer> getComparator() {
+		return new Comparator<Customer>() {
+            @Override
+            public int compare(Customer customer1, Customer customer2) {
+                return customer1.compareTo(customer2);
+            }
+        };
 	}
 
 	@Override

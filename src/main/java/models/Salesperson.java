@@ -1,11 +1,12 @@
 package models;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 import builders.SalespersonBuilder;
 
-public class Salesperson extends Person {
+public class Salesperson extends Person<Salesperson> {
 
 	private Long id;
 	private String cpf;
@@ -42,6 +43,21 @@ public class Salesperson extends Person {
 
 	public Float getTotalSold() {
 		return totalSold;
+	}
+	
+
+	@Override
+	public int compareTo(Salesperson anotherSalesperson) {
+		return totalSold.compareTo(anotherSalesperson.getTotalSold());
+	}
+	
+	public static Comparator<Salesperson> getComparator() {
+		return new Comparator<Salesperson>() {
+            @Override
+            public int compare(Salesperson salesperson1, Salesperson salesperson2) {
+                return salesperson1.compareTo(salesperson2);
+            }
+        };
 	}
 
 	@Override
@@ -91,11 +107,5 @@ public class Salesperson extends Person {
 		} else if (!totalSold.equals(other.totalSold))
 			return false;
 		return true;
-	}
-
-	@Override
-	public void loadCSVData(CSVData data) {
-		// TODO Auto-generated method stub
-		
 	}
 }
