@@ -62,7 +62,7 @@ public class ReportService {
 							.build();
 		String fileName = Paths.get(filepath).getFileName().toString();
 		reportRepository.saveToFile(report, fileName);
-		clear();
+		reset();
 	}
 
 	//It could be more efficient if Sales were to be linked with
@@ -78,18 +78,20 @@ public class ReportService {
 		for (Sale sale : saleRepository.findAll()) {
 			Salesperson salesperson = 
 					salespeople.get(sale.getSalespersonName());
-			salesperson.addSale(sale);
-			if (salesperson.worseSellerThan(worstSalesperson)) {
-				worstSalesperson = salesperson;
+			if (salesperson != null) {
+				salesperson.addSale(sale);
+				if (salesperson.worseSellerThan(worstSalesperson)) {
+					worstSalesperson = salesperson;
+				}
 			}
 		}
 		return worstSalesperson;
 	}
 
-	private void clear() {
-		saleRepository.clear();
-		salespersonRepository.clear();
-		customerRepository.clear();
-		reportRepository.clear();
+	private void reset() {
+		saleRepository.reset();
+		salespersonRepository.reset();
+		customerRepository.reset();
+		reportRepository.reset();
 	}										
 }

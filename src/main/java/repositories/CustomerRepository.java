@@ -28,8 +28,8 @@ public class CustomerRepository implements IRepository<Customer> {
 	}
 
 	@Override
-	public void clear() {
-		customers.clear();
+	public void reset() {
+		customers = new TreeSet<Customer>(Customer.getComparator());
 	}
 
 	@Override

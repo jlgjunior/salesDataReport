@@ -43,7 +43,7 @@ public class ReportRepository implements IRepository<Report> {
 	}
 
 	@Override
-	public void clear() {
+	public void reset() {
 		
 	}
 

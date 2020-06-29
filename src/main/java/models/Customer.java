@@ -31,7 +31,7 @@ public class Customer extends Person<Customer>{
 
 	@Override
 	public int compareTo(Customer anotherCustomer) {
-		return area.compareTo(anotherCustomer.getArea());
+		return cnpj.compareTo(anotherCustomer.getCnpj());
 	}
 	
 	public static Comparator<Customer> getComparator() {

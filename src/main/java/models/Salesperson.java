@@ -54,7 +54,7 @@ public class Salesperson extends Person<Salesperson> {
 	public int compareTo(Salesperson anotherSalesperson) {
 		if (anotherSalesperson == null)
 			return 0;
-		return totalSold.compareTo(anotherSalesperson.getTotalSold());
+		return name.compareTo(anotherSalesperson.getName());
 	}
 	
 	public static Comparator<Salesperson> getComparator() {

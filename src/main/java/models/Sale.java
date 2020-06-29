@@ -45,7 +45,11 @@ public class Sale implements PersistantModel<Sale> {
 
 	@Override
 	public int compareTo(Sale anotherSale) {
-		return saleValue.compareTo(anotherSale.getSaleValue());
+		int returnValue = saleValue.compareTo(anotherSale.getSaleValue());
+		if (returnValue == 0) {
+			return 1;
+		}
+		return returnValue;
 	}
 	
 	//As you can see, the compareTo result is multiplied by

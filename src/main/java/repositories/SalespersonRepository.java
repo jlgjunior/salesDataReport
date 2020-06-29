@@ -5,6 +5,7 @@ import java.util.TreeSet;
 
 import org.springframework.stereotype.Repository;
 
+import models.Customer;
 import models.Salesperson;
 
 @Repository
@@ -30,8 +31,8 @@ public class SalespersonRepository implements IRepository<Salesperson> {
 	}
 
 	@Override
-	public void clear() {
-		salespeople.clear();
+	public void reset() {
+		salespeople = new TreeSet<Salesperson>(Salesperson.getComparator());
 	}
 
 	@Override

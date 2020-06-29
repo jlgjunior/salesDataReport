@@ -5,6 +5,7 @@ import java.util.TreeSet;
 
 import org.springframework.stereotype.Repository;
 
+import models.Customer;
 import models.Sale;
 
 @Repository
@@ -28,8 +29,8 @@ public class SaleRepository implements IRepository<Sale> {
 	}
 
 	@Override
-	public void clear() {
-		sales.clear();
+	public void reset() {
+		sales = new TreeSet<Sale>(Sale.getComparator());
 	}
 
 	@Override
