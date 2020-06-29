@@ -32,4 +32,9 @@ public class CustomerRepository implements IRepository<Customer> {
 		customers.clear();
 	}
 
+	@Override
+	public Customer saveToFile(Customer entity, String fileName) {
+		return entity;
+	}
+
 }

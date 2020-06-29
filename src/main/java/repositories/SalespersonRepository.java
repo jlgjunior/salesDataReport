@@ -33,5 +33,9 @@ public class SalespersonRepository implements IRepository<Salesperson> {
 	public void clear() {
 		salespeople.clear();
 	}
-	
+
+	@Override
+	public Salesperson saveToFile(Salesperson entity, String fileName) {
+		return entity;
+	}
 }

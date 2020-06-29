@@ -22,6 +22,7 @@ public class ReportRepository implements IRepository<Report> {
 		return entity;
 	}
 
+	@Override
 	public Report saveToFile(Report entity, String filename) {
 		String data = entity.toString();
 		String format = "yyyyMMddHHmmssSSS'.txt'";

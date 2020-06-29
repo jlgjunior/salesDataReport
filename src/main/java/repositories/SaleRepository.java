@@ -32,4 +32,9 @@ public class SaleRepository implements IRepository<Sale> {
 		sales.clear();
 	}
 
+	@Override
+	public Sale saveToFile(Sale entity, String fileName) {
+		return entity;
+	}
+
 }
