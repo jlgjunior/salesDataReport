@@ -5,12 +5,10 @@ import java.util.List;
 
 import builders.ProductBuilder;
 import builders.SaleBuilder;
-import builders.SaleProductBuilder;
 import models.CSVData;
 import models.CSVSaleData;
 import models.Product;
 import models.Sale;
-import models.SaleProduct;
 
 public class SaleFactory extends PersistantModelFactory<Sale> {
 
@@ -22,15 +20,17 @@ public class SaleFactory extends PersistantModelFactory<Sale> {
 	public Sale createPersistantModel(CSVData data) {
 		CSVSaleData saleData = 
 				(CSVSaleData) data;
-		List<SaleProduct> saleProducts = createProducts(saleData.getProducts());
+		Float saleValue = 0f;
+		List<Product> products = createProducts(saleData.getProducts(), saleValue);
 		return new SaleBuilder()
 					.setId(saleData.getId())
-					.setSaleProducts(saleProducts)			   
+					.setProducts(products)
+					.setSaleValue(saleValue)
 					.build();
 	}
 
-	private List<SaleProduct> createProducts(String[] products) {
-		List<SaleProduct> saleProductsList = new ArrayList<SaleProduct>();
+	private List<Product> createProducts(String[] products, Float saleValue) {
+		List<Product> saleProductsList = new ArrayList<Product>();
 		for (String productString : products) {
 			String[] productInfo = productString.split("-");
 			Long id = Long.valueOf(productInfo[0]);
@@ -38,13 +38,11 @@ public class SaleFactory extends PersistantModelFactory<Sale> {
 			Float price = Float.valueOf(productInfo[2]);
 			Product product  = new ProductBuilder()
 								.setId(id)
+								.setQuantity(quantity)
+								.setPrice(price)
 								.build();
-			SaleProduct saleProduct = new SaleProductBuilder()
-					.setQuantity(quantity)
-					.setPrice(price)
-					.setProduct(product)
-					.build();
-			saleProductsList.add(saleProduct);
+			saleValue += (product.getPrice() * product.getQuantity());
+			saleProductsList.add(product);
 		}
 		return saleProductsList;
 	}

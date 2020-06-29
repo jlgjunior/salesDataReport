@@ -3,17 +3,18 @@ package builders;
 import java.util.ArrayList;
 import java.util.List;
 
+import models.Product;
 import models.Sale;
-import models.SaleProduct;
 
 
 public class SaleBuilder {
 
 	private Long id;
-	private List<SaleProduct> saleProducts;
+	private List<Product> products;
+	private Float saleValue;
 	
 	public SaleBuilder() {
-		this.saleProducts = new ArrayList<SaleProduct>();
+		this.products = new ArrayList<Product>();
 	}
 
 	public Sale build() {
@@ -25,8 +26,8 @@ public class SaleBuilder {
 		return this;
 	}
 	
-	public SaleBuilder setSaleProducts(List<SaleProduct> saleProducts) {
-		this.saleProducts = saleProducts;
+	public SaleBuilder setProducts(List<Product> products) {
+		this.products = products;
 		return this;
 	}
 
@@ -34,8 +35,17 @@ public class SaleBuilder {
 		return id;
 	}
 
-	public List<SaleProduct> getSaleProducts() {
-		return saleProducts;
+	public List<Product> getProducts() {
+		return products;
+	}
+
+	public SaleBuilder setSaleValue(Float saleValue) {
+		this.saleValue = saleValue;
+		return this;
+	}
+
+	public Float getSaleValue() {
+		return saleValue;
 	}
 
 	@Override
@@ -43,7 +53,8 @@ public class SaleBuilder {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((saleProducts == null) ? 0 : saleProducts.hashCode());
+		result = prime * result + ((products == null) ? 0 : products.hashCode());
+		result = prime * result + ((saleValue == null) ? 0 : saleValue.hashCode());
 		return result;
 	}
 
@@ -61,10 +72,15 @@ public class SaleBuilder {
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
-		if (saleProducts == null) {
-			if (other.saleProducts != null)
+		if (products == null) {
+			if (other.products != null)
 				return false;
-		} else if (!saleProducts.equals(other.saleProducts))
+		} else if (!products.equals(other.products))
+			return false;
+		if (saleValue == null) {
+			if (other.saleValue != null)
+				return false;
+		} else if (!saleValue.equals(other.saleValue))
 			return false;
 		return true;
 	}
