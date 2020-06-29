@@ -1,12 +1,32 @@
 package repositories;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.ArrayList;
+import java.util.List;
 
 import models.Sale;
 
-@Transactional(propagation=Propagation.REQUIRED,readOnly=false)
-public interface SaleRepository extends CrudRepository<Sale, Long> {
+public class SaleRepository implements IRepository<Sale> {
+	
+	List<Sale> sales = new ArrayList<Sale>();
+	
+	public SaleRepository() {
+		
+	}
+	
+	@Override
+	public Sale save(Sale entity) {
+		sales.add(entity);
+		return entity;
+	}
+
+	@Override
+	public List<Sale> findAll() {
+		return sales;
+	}
+
+	@Override
+	public void clear() {
+		sales.clear();
+	}
 
 }

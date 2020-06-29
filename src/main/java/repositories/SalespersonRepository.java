@@ -1,17 +1,36 @@
 package repositories;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
+import java.util.Map;
 
 import models.Salesperson;
 
-@Repository
-@Transactional(propagation=Propagation.REQUIRED,readOnly=false)
-public interface SalespersonRepository extends CrudRepository<Salesperson, Long> {
+public class SalespersonRepository implements IRepository<Salesperson> {
 
-	public List<Salesperson> findByName(String name);
+	public Map<String, Salesperson> salespeople = 
+                       			new HashMap<String, Salesperson>();
+
+	
+	public SalespersonRepository() {
+		
+	}
+	
+	@Override
+	public Salesperson save(Salesperson entity) {
+		salespeople.putIfAbsent(entity.getName(), entity);
+		return entity;
+	}
+
+	@Override
+	public List<Salesperson> findAll() {
+		return new ArrayList<Salesperson>(salespeople.values());
+	}
+
+	@Override
+	public void clear() {
+		salespeople.clear();
+	}
 	
 }
