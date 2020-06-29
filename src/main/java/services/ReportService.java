@@ -36,21 +36,9 @@ public class ReportService {
 	IRepository<Report> reportRepository;
 	
 	public ReportService() {
-		outputFolder = fileSystemManagerService
-	              .combinePath(fileSystemManagerService.getHome(), "out");
-		initializeOutputDirectory(outputFolder);
+		
 	}
 	
-	private void initializeOutputDirectory(Path outputFolder) {
-		try {
-			fileSystemManagerService.createDirectories(outputFolder);	
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("System initialization error due to"
-					+ " I/O exception. Error in report service");
-		}
-	}
-
 	public void generateReport(String filepath) {
 		dataImporterService.importDataFromFile(filepath);
 		SortedSet<Salesperson> salespeople =

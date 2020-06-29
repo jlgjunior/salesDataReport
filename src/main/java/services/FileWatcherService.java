@@ -18,15 +18,11 @@ public class FileWatcherService {
 	ReportService reportService;
 	@Autowired
 	FileSystemManagerService fileSystemManagerService;
-	private Path monitoredFolder;
 	private WatchService watchService;
 	
 	
 	public FileWatcherService() {
-		monitoredFolder = fileSystemManagerService
-							.combinePath(fileSystemManagerService.getHome(), "in");
 		watchService = getDefaultWatcher();
-		initializeInputFolder();
 	}
 	
 	private WatchService getDefaultWatcher() {
@@ -42,16 +38,6 @@ public class FileWatcherService {
 		return null;
 	}
 	
-	private void initializeInputFolder() {
-		try {
-			fileSystemManagerService.createDirectories(monitoredFolder);
-		} catch (IOException e) {
-			e.printStackTrace();
-			System.out.println("System initialization error due to"
-					+ " I/O exception with Operational System watcher "
-					+ "service. error in filewatcher");
-		}
-	}
 	
 	public void watch() throws IOException {
 		processCurrentFiles();

@@ -14,9 +14,41 @@ import org.springframework.stereotype.Service;
 @Service
 public class FileSystemManagerService {
 
+	private Path inputFolder;
+	private Path outputFolder;
+	
 	public FileSystemManagerService() {
-		
+		initializeFolders();
 	}
+
+	private void initializeFolders() {
+		initializeInputFolder();
+		initializeOutputFolder();
+	}
+	
+	private void initializeOutputFolder() {
+		outputFolder = combinePath(getHome(), "in");
+		try {
+			createDirectories(outputFolder);	
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("System initialization error due to"
+					+ " I/O exception. Error in report service");
+		}
+	}
+
+	private void initializeInputFolder() {
+		inputFolder = combinePath(getHome(), "in");
+		try {
+			createDirectories(inputFolder);
+		} catch (IOException e) {
+			e.printStackTrace();
+			System.out.println("System initialization error due to"
+					+ " I/O exception with Operational System watcher "
+					+ "service. error in filewatcher");
+		}
+	}
+	
 
 	public String getHome() {
 		return System.getProperty("user.home");
@@ -53,5 +85,13 @@ public class FileSystemManagerService {
 	
 	public void deleteFile() {
 		
+	}
+
+	public Path getInputFolder() {
+		return inputFolder;
+	}
+
+	public Path getOutputFolder() {
+		return outputFolder;
 	}
 }
