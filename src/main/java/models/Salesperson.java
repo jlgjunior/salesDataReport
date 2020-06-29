@@ -25,6 +25,7 @@ public class Salesperson extends Person<Salesperson> {
 		cpf = salespersonBuilder.getCpf();
 		name = salespersonBuilder.getName();
 		salary = salespersonBuilder.getSalary();
+		totalSold = 0F;
 	}
 
 	public String getCpf() {
