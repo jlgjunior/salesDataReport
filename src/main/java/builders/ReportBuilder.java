@@ -1,38 +1,51 @@
-package models;
+package builders;
 
-import builders.ReportBuilder;
+import models.Report;
 
-public class Report {
+public class ReportBuilder {
 
 	private Integer customersCount;
 	private Integer salespeopleCount;
 	private Long mostExpensiveSaleId;
 	private String worstSalespersonName;
 	
-	public Report() {
+	public ReportBuilder() {
 		
 	}
 	
-	public Report(ReportBuilder reportBuilder) {
-		customersCount = reportBuilder.getCustomersCount();
-		salespeopleCount = reportBuilder.getSalespeopleCount();
-		mostExpensiveSaleId = reportBuilder.getMostExpensiveSaleId();
-		worstSalespersonName = reportBuilder.getWorstSalespersonName();
+	public Report build() {
+		return new Report(this);
 	}
 	
 	public Integer getCustomersCount() {
 		return customersCount;
 	}
+	public ReportBuilder setCustomersCount(Integer customersCount) {
+		this.customersCount = customersCount;
+		return this;
+	}
 	public Integer getSalespeopleCount() {
 		return salespeopleCount;
 	}
-	public String getWorstSalespersonName() {
-		return worstSalespersonName;
+	public ReportBuilder setSalespeopleCount(Integer salespeopleCount) {
+		this.salespeopleCount = salespeopleCount;
+		return this;
 	}
 	public Long getMostExpensiveSaleId() {
 		return mostExpensiveSaleId;
 	}
-
+	public ReportBuilder setMostExpensiveSaleId(Long mostExpensiveSaleId) {
+		this.mostExpensiveSaleId = mostExpensiveSaleId;
+		return this;
+	}
+	public String getWorstSalespersonName() {
+		return worstSalespersonName;
+	}
+	public ReportBuilder setWorstSalespersonName(String worstSalespersonName) {
+		this.worstSalespersonName = worstSalespersonName;
+		return this;
+	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -43,7 +56,6 @@ public class Report {
 		result = prime * result + ((worstSalespersonName == null) ? 0 : worstSalespersonName.hashCode());
 		return result;
 	}
-
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -52,7 +64,7 @@ public class Report {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		Report other = (Report) obj;
+		ReportBuilder other = (ReportBuilder) obj;
 		if (customersCount == null) {
 			if (other.customersCount != null)
 				return false;
@@ -74,5 +86,5 @@ public class Report {
 		} else if (!worstSalespersonName.equals(other.worstSalespersonName))
 			return false;
 		return true;
-	}	
+	}
 }
