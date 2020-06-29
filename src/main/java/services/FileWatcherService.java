@@ -44,7 +44,7 @@ public class FileWatcherService {
 		while(true) {
 			WatchKey watchKey;
 			try {
-				watchKey = monitoredFolder.register(watchService, StandardWatchEventKinds.ENTRY_CREATE);
+				watchKey = fileSystemManagerService.getInputFolder().register(watchService, StandardWatchEventKinds.ENTRY_CREATE);
 				while ((watchKey = watchService.take()) != null) {
 					for (WatchEvent<?> event : watchKey.pollEvents()) {
 						String filepath = event.context().toString();
@@ -59,7 +59,8 @@ public class FileWatcherService {
 	}
 
 	private void processCurrentFiles() throws IOException {
-		for (Path path : fileSystemManagerService.getFilePathsIn(monitoredFolder)) {
+		Path inputPath = fileSystemManagerService.getInputFolder();
+		for (Path path : fileSystemManagerService.getFilePathsIn(inputPath)) {
 	    	if (!fileSystemManagerService.isDirectory(path)) {
 	    		reportService.generateReport(path.toString());
 	        }
