@@ -11,7 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 				SalespersonTest.class,
 				SaleTest.class, 
 				ProductTest.class,
-				SaleProductTest.class,
 				CSVDataReaderServiceTest.class,
 				DataImporterServiceTest.class,
 				CSVSalespersonDataTest.class,
