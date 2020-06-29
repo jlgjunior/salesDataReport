@@ -4,12 +4,12 @@ import models.Salesperson;
 
 public class SalespersonBuilder {
 
-	private String name;
-	private String cpf;
-	private Float salary;
+	private String name = "None";
+	private String cpf = "None";
+	private Float salary = 0F;
 	
 	public SalespersonBuilder() {
-		
+
 	}
 
 	public Salesperson build() {

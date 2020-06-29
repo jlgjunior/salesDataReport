@@ -12,8 +12,7 @@ public class Report {
 	public Report() {
 		customersCount = 0;
 		salespeopleCount = 0;
-		mostExpensiveSaleId = null;
-		worstSalespersonName = "No salesperson found";
+		worstSalespersonName = "None";
 	}
 	
 	public Report(ReportBuilder reportBuilder) {

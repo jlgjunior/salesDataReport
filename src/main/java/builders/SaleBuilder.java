@@ -10,12 +10,12 @@ import models.Sale;
 public class SaleBuilder {
 
 	private Long id;
-	private String salespersonName;
-	private List<Product> products;
-	private Float saleValue;
+	private String salespersonName = "None";
+	private List<Product> products = new ArrayList<Product>();
+	private Float saleValue = 0F;
 	
 	public SaleBuilder() {
-		this.products = new ArrayList<Product>();
+
 	}
 
 	public Sale build() {

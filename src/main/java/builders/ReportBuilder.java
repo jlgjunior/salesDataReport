@@ -4,10 +4,10 @@ import models.Report;
 
 public class ReportBuilder {
 
-	private Integer customersCount;
-	private Integer salespeopleCount;
+	private Integer customersCount = 0;
+	private Integer salespeopleCount = 0;
 	private Long mostExpensiveSaleId;
-	private String worstSalespersonName;
+	private String worstSalespersonName = "None";
 	
 	public ReportBuilder() {
 		

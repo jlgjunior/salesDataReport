@@ -6,8 +6,8 @@ import models.Product;
 public class ProductBuilder {
 
 	private Long id;
-	private Integer quantity;
-	private Float price;
+	private Integer quantity = 0;
+	private Float price = 0F;
 	
 	public ProductBuilder() {
 		

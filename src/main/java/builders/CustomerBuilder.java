@@ -4,9 +4,9 @@ import models.Customer;
 
 public class CustomerBuilder {
 	
-	private String name;
-	private String cnpj;
-	private String area;
+	private String name = "None";
+	private String cnpj = "None";
+	private String area = "None";
 	
 	public CustomerBuilder() {
 		
