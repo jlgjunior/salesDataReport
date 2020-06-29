@@ -14,6 +14,8 @@ public class Product {
 
 	public Product(ProductBuilder productBuilder) {
 		id = productBuilder.getId();
+		price = productBuilder.getPrice();
+		quantity = productBuilder.getQuantity();
 	}
 
 	public Long getId() {
