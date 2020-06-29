@@ -10,6 +10,7 @@ import models.Sale;
 public class SaleBuilder {
 
 	private Long id;
+	private String salespersonName;
 	private List<Product> products;
 	private Float saleValue;
 	
@@ -48,6 +49,15 @@ public class SaleBuilder {
 		return saleValue;
 	}
 
+	public String getSalespersonName() {
+		return salespersonName;
+	}
+
+	public SaleBuilder setSalespersonName(String salespersonName) {
+		this.salespersonName = salespersonName;
+		return this;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -55,6 +65,7 @@ public class SaleBuilder {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((products == null) ? 0 : products.hashCode());
 		result = prime * result + ((saleValue == null) ? 0 : saleValue.hashCode());
+		result = prime * result + ((salespersonName == null) ? 0 : salespersonName.hashCode());
 		return result;
 	}
 
@@ -81,6 +92,11 @@ public class SaleBuilder {
 			if (other.saleValue != null)
 				return false;
 		} else if (!saleValue.equals(other.saleValue))
+			return false;
+		if (salespersonName == null) {
+			if (other.salespersonName != null)
+				return false;
+		} else if (!salespersonName.equals(other.salespersonName))
 			return false;
 		return true;
 	}

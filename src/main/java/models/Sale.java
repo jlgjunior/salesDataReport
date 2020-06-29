@@ -8,6 +8,7 @@ import builders.SaleBuilder;
 public class Sale implements PersistantModel {
 	
 	private Long id;
+	private String salespersonName;
 	private Float saleValue;
 	private List<Product> products;
 
@@ -17,6 +18,7 @@ public class Sale implements PersistantModel {
 	
 	public Sale(SaleBuilder saleBuilder) {
 		id = saleBuilder.getId();
+		salespersonName = saleBuilder.getSalespersonName();
 		saleValue = saleBuilder.getSaleValue();
 		products = saleBuilder.getProducts();
 	}
@@ -39,6 +41,10 @@ public class Sale implements PersistantModel {
 		return saleValue;
 	}
 
+	public String getSalespersonName() {
+		return salespersonName;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -46,6 +52,7 @@ public class Sale implements PersistantModel {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((products == null) ? 0 : products.hashCode());
 		result = prime * result + ((saleValue == null) ? 0 : saleValue.hashCode());
+		result = prime * result + ((salespersonName == null) ? 0 : salespersonName.hashCode());
 		return result;
 	}
 
@@ -72,6 +79,11 @@ public class Sale implements PersistantModel {
 			if (other.saleValue != null)
 				return false;
 		} else if (!saleValue.equals(other.saleValue))
+			return false;
+		if (salespersonName == null) {
+			if (other.salespersonName != null)
+				return false;
+		} else if (!salespersonName.equals(other.salespersonName))
 			return false;
 		return true;
 	}
