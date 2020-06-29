@@ -3,24 +3,14 @@ package models;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-
 import builders.SalespersonBuilder;
 
-@Entity
 public class Salesperson extends Person {
 
-	@Id
-	@GeneratedValue
 	private Long id;
 	private String cpf;
 	private Float salary;
-	@OneToMany
-	@JoinColumn(name="salesperson_id")
+	private Float totalSold;
 	private List<Sale> sales = new ArrayList<Sale>();
 
 	public Salesperson() {
@@ -42,19 +32,16 @@ public class Salesperson extends Person {
 	}
 
 	public List<Sale> getSales() {
-		return this.sales ;
+		return sales ;
 	}
 
 	public void addSale(Sale sale) {
-		this.sales.add(sale);
+		sales.add(sale);
+		totalSold += sale.getSaleValue();
 	}
 
-	@Override
-	public void loadCSVData(CSVData data) {
-		CSVSalespersonData salespersonData = (CSVSalespersonData) data;
-		name = salespersonData.getName();
-		cpf = salespersonData.getCpf();
-		salary = salespersonData.getSalary();
+	public Float getTotalSold() {
+		return totalSold;
 	}
 
 	@Override
@@ -65,6 +52,7 @@ public class Salesperson extends Person {
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((salary == null) ? 0 : salary.hashCode());
 		result = prime * result + ((sales == null) ? 0 : sales.hashCode());
+		result = prime * result + ((totalSold == null) ? 0 : totalSold.hashCode());
 		return result;
 	}
 
@@ -97,6 +85,17 @@ public class Salesperson extends Person {
 				return false;
 		} else if (!sales.equals(other.sales))
 			return false;
+		if (totalSold == null) {
+			if (other.totalSold != null)
+				return false;
+		} else if (!totalSold.equals(other.totalSold))
+			return false;
 		return true;
+	}
+
+	@Override
+	public void loadCSVData(CSVData data) {
+		// TODO Auto-generated method stub
+		
 	}
 }
