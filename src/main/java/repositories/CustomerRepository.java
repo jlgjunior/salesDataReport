@@ -3,9 +3,11 @@ package repositories;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.springframework.stereotype.Repository;
+
 import models.Customer;
 
-
+@Repository
 public class CustomerRepository implements IRepository<Customer> {
 
 	SortedSet<Customer> customers = new TreeSet<Customer>(Customer.getComparator());

@@ -3,8 +3,11 @@ package repositories;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.springframework.stereotype.Repository;
+
 import models.Sale;
 
+@Repository
 public class SaleRepository implements IRepository<Sale> {
 	
 	SortedSet<Sale> sales = new TreeSet<Sale>(Sale.getComparator());

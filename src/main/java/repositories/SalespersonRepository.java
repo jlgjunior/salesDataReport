@@ -3,8 +3,11 @@ package repositories;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
+import org.springframework.stereotype.Repository;
+
 import models.Salesperson;
 
+@Repository
 public class SalespersonRepository implements IRepository<Salesperson> {
 
 	public SortedSet<Salesperson> salespeople = 
