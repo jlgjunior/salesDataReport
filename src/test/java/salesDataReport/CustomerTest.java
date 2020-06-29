@@ -1,14 +1,10 @@
 package salesDataReport;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import models.CSVCustomerData;
-import models.CSVData;
 import models.Customer;
-import models.PersistantModel;
 import models.Person;
 import org.springframework.test.util.ReflectionTestUtils;
 
@@ -17,29 +13,8 @@ public class CustomerTest {
 	@Test
 	public void getNameTest() {
 		final String NAME = "Ed";
-		Person customer = new Customer();
+		Person<Customer> customer = new Customer();
 		ReflectionTestUtils.setField(customer, "name", NAME);
 		assertEquals(NAME, customer.getName());
 	}
-	
-	@Test
-	public void loadDataTest() {
-		final String NAME = "Ed";
-		final String CNPJ = "10";
-		final String AREA = "Games";
-		boolean result;
-		PersistantModel model = new Customer();
-		CSVCustomerData csvData = new CSVCustomerData();
-		ReflectionTestUtils.setField(csvData, "name", NAME);
-		ReflectionTestUtils.setField(csvData, "cnpj", CNPJ);
-		ReflectionTestUtils.setField(csvData, "area", AREA);
-		CSVData gen = (CSVData) csvData;
-		model.loadCSVData(gen);
-		Customer customer = (Customer) model;
-		result = csvData.getName().equals(customer.getName());
-		result &= csvData.getCnpj().equals(customer.getCnpj());
-		result &= csvData.getArea().equals(customer.getArea());
-		assertTrue(result);
-	}
-	
 }

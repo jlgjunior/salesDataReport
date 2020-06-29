@@ -6,9 +6,6 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
-import models.CSVData;
-import models.CSVSalespersonData;
-import models.PersistantModel;
 import models.Person;
 import models.Salesperson;
 import models.Sale;
@@ -19,7 +16,7 @@ public class SalespersonTest {
 	//Checks if getName returns assigned name
 	public void getNameTest() {
 		final String NAME = "John";
-		Person person = new Salesperson();
+		Person<Salesperson> person = new Salesperson();
 		ReflectionTestUtils.setField(person, "name", NAME);
 		assertEquals(NAME, person.getName());
 	}
@@ -52,26 +49,6 @@ public class SalespersonTest {
 	public void getSalesEmptyTest() {
 		Salesperson salesperson = new Salesperson();
 		assertTrue(salesperson.getSales().isEmpty());
-	}
-	
-	@Test
-	public void loadDataTest() {
-		final String NAME = "Ed";
-		final String CPF = "10";
-		final Float SALARY = 1000f;
-		boolean result;
-		PersistantModel model = new Salesperson();
-		CSVSalespersonData csvData = new CSVSalespersonData();
-		ReflectionTestUtils.setField(csvData, "name", NAME);
-		ReflectionTestUtils.setField(csvData, "cpf", CPF);
-		ReflectionTestUtils.setField(csvData, "salary", SALARY);
-		CSVData gen = (CSVData) csvData;
-		model.loadCSVData(gen);
-		Salesperson salesperson = (Salesperson) model;
-		result = csvData.getName().equals(salesperson.getName());
-		result &= csvData.getCpf().equals(salesperson.getCpf());
-		result &= csvData.getSalary().equals(salesperson.getSalary());
-		assertTrue(result);
 	}
 	
 }

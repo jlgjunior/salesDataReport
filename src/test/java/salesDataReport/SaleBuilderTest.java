@@ -10,14 +10,14 @@ import org.junit.Test;
 import org.springframework.test.util.ReflectionTestUtils;
 
 import builders.SaleBuilder;
+import models.Product;
 import models.Sale;
-import models.SaleProduct;
 
 public class SaleBuilderTest {
 
 		@Test
 		public void getIdTest() {
-			final Integer ID = 1;
+			final Long ID = 1L;
 			SaleBuilder saleBuilder = new SaleBuilder();
 			ReflectionTestUtils.setField(saleBuilder, "id", ID);
 			assertEquals(ID, saleBuilder.getId());
@@ -32,36 +32,36 @@ public class SaleBuilderTest {
 		}
 		
 		@Test
-		public void getSaleProductsTest() {
-			List<SaleProduct> saleProducts = new ArrayList<SaleProduct>();
-			saleProducts.add(new SaleProduct());
-			saleProducts.add(new SaleProduct());
+		public void getProductsTest() {
+			List<Product> saleProducts = new ArrayList<Product>();
+			saleProducts.add(new Product());
+			saleProducts.add(new Product());
 			SaleBuilder saleBuilder = new SaleBuilder();
-			ReflectionTestUtils.setField(saleBuilder, "saleProducts", saleProducts);
-			assertSame(saleProducts, saleBuilder.getSaleProducts());
+			ReflectionTestUtils.setField(saleBuilder, "products", saleProducts);
+			assertSame(saleProducts, saleBuilder.getProducts());
 		}
 		
 		@Test
-		public void setSaleProductsTest() {
-			List<SaleProduct> saleProducts = new ArrayList<SaleProduct>();
-			saleProducts.add(new SaleProduct());
-			saleProducts.add(new SaleProduct());
+		public void setProductsTest() {
+			List<Product> saleProducts = new ArrayList<Product>();
+			saleProducts.add(new Product());
+			saleProducts.add(new Product());
 			SaleBuilder saleBuilder = new SaleBuilder();
-			saleBuilder.setSaleProducts(saleProducts);
-			assertSame(saleProducts, saleBuilder.getSaleProducts());
+			saleBuilder.setProducts(saleProducts);
+			assertSame(saleProducts, saleBuilder.getProducts());
 		}
 		
 		@Test
 		public void buildTest() {
-			List<SaleProduct> saleProducts = new ArrayList<SaleProduct>();
-			saleProducts.add(new SaleProduct());
-			saleProducts.add(new SaleProduct());
+			List<Product> saleProducts = new ArrayList<Product>();
+			saleProducts.add(new Product());
+			saleProducts.add(new Product());
 			final Long ID = 1L;
 			Sale sale = new Sale();
 			ReflectionTestUtils.setField(sale, "id", ID);
-			ReflectionTestUtils.setField(sale, "saleProducts", saleProducts);
+			ReflectionTestUtils.setField(sale, "products", saleProducts);
 			SaleBuilder SaleBuilder = new SaleBuilder();
 			assertEquals(sale, 
-					SaleBuilder.setId(ID).setSaleProducts(saleProducts).build());
+					SaleBuilder.setId(ID).setProducts(saleProducts).build());
 		}
 }

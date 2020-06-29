@@ -20,8 +20,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 				SalespersonBuilderTest.class,
 				CustomerBuilderTest.class,
 				SaleBuilderTest.class,
-				ProductBuilderTest.class,
-				SaleProductBuilderTest.class})
+				ProductBuilderTest.class})
 
 public class AllTests {
 
