@@ -20,14 +20,6 @@ public class FileSystemManagerService {
 	public FileSystemManagerService() {
 		initializeFolders();
 	}
-
-	public boolean isEmptyFile(String filepath) {
-		try {
-			return Files.size(Paths.get(filepath)) <= 0;
-		} catch (IOException e) {
-			return true;
-		}
-	}
 	
 	private void initializeFolders() {
 		initializeInputFolder();
@@ -91,10 +83,6 @@ public class FileSystemManagerService {
 		return true;
 	}
 	
-	public void deleteFile() {
-		
-	}
-
 	public Path getInputFolder() {
 		return inputFolder;
 	}
