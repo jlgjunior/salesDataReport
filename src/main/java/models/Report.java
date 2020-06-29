@@ -80,9 +80,11 @@ public class Report {
 
 	@Override
 	public String toString() {
-		return "Report [customersCount=" + customersCount + ", salespeopleCount=" + salespeopleCount
-				+ ", mostExpensiveSaleId=" + mostExpensiveSaleId + ", worstSalespersonName=" + worstSalespersonName
-				+ "]";
+		return "Report\n\tTotal customers=" + customersCount 
+				+ "\n\tTotal salespeople=" + salespeopleCount
+				+ "\n\tMost expensive sale ID=" + mostExpensiveSaleId 
+				+ "\n\tWorst salesperson=" + 
+				(worstSalespersonName == null? "None" : worstSalespersonName);
 	}	
 	
 	
