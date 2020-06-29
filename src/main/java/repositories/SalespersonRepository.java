@@ -1,16 +1,14 @@
 package repositories;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import models.Salesperson;
 
 public class SalespersonRepository implements IRepository<Salesperson> {
 
-	public Map<String, Salesperson> salespeople = 
-                       			new HashMap<String, Salesperson>();
+	public SortedSet<Salesperson> salespeople = 
+                       			new TreeSet<Salesperson>(Salesperson.getComparator());
 
 	
 	public SalespersonRepository() {
@@ -19,13 +17,13 @@ public class SalespersonRepository implements IRepository<Salesperson> {
 	
 	@Override
 	public Salesperson save(Salesperson entity) {
-		salespeople.putIfAbsent(entity.getName(), entity);
+		salespeople.add(entity);
 		return entity;
 	}
 
 	@Override
-	public List<Salesperson> findAll() {
-		return new ArrayList<Salesperson>(salespeople.values());
+	public SortedSet<Salesperson> findAll() {
+		return salespeople;
 	}
 
 	@Override

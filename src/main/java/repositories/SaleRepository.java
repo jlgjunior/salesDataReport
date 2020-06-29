@@ -1,13 +1,13 @@
 package repositories;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.SortedSet;
+import java.util.TreeSet;
 
 import models.Sale;
 
 public class SaleRepository implements IRepository<Sale> {
 	
-	List<Sale> sales = new ArrayList<Sale>();
+	SortedSet<Sale> sales = new TreeSet<Sale>(Sale.getComparator());
 	
 	public SaleRepository() {
 		
@@ -20,7 +20,7 @@ public class SaleRepository implements IRepository<Sale> {
 	}
 
 	@Override
-	public List<Sale> findAll() {
+	public SortedSet<Sale> findAll() {
 		return sales;
 	}
 
