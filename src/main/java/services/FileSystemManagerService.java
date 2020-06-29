@@ -27,7 +27,7 @@ public class FileSystemManagerService {
 	}
 	
 	private void initializeOutputFolder() {
-		outputFolder = combinePath(getHome(), "in");
+		outputFolder = combinePath(getHome(), "out");
 		try {
 			createDirectories(outputFolder);	
 		} catch (IOException e) {
