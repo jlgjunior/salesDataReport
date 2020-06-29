@@ -80,9 +80,11 @@ public class ReportService {
 					salespeople.get(sale.getSalespersonName());
 			if (salesperson != null) {
 				salesperson.addSale(sale);
-				if (salesperson.worseSellerThan(worstSalesperson)) {
-					worstSalesperson = salesperson;
-				}
+			}
+		}
+		for (Salesperson salesperson : salespeopleData) {
+			if (salesperson.worseSellerThan(worstSalesperson)) {
+				worstSalesperson = salesperson;
 			}
 		}
 		return worstSalesperson;

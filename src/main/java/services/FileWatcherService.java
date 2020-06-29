@@ -48,7 +48,9 @@ public class FileWatcherService {
 				while ((watchKey = watchService.take()) != null) {
 					for (WatchEvent<?> event : watchKey.pollEvents()) {
 						String filepath = event.context().toString();
-						reportService.generateReport(filepath);
+						if (!fileSystemManagerService.isEmptyFile(filepath)) {
+							reportService.generateReport(filepath);
+						}
 					}
 					watchKey.reset();
 				}

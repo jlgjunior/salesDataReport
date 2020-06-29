@@ -21,6 +21,14 @@ public class FileSystemManagerService {
 		initializeFolders();
 	}
 
+	public boolean isEmptyFile(String filepath) {
+		try {
+			return Files.size(Paths.get(filepath)) <= 0;
+		} catch (IOException e) {
+			return true;
+		}
+	}
+	
 	private void initializeFolders() {
 		initializeInputFolder();
 		initializeOutputFolder();
