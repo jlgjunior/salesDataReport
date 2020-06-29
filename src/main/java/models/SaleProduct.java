@@ -1,13 +1,26 @@
 package models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+
 import builders.SaleProductBuilder;
 
+@Entity
 public class SaleProduct implements PersistantModel {
 
-	private Integer id;
+	@Id
+	@GeneratedValue
+	private Long id;
 	private Float price;
 	private Integer quantity;
+	@ManyToOne
+	@JoinColumn(name="sale_id")
 	private Sale sale;
+	@ManyToOne
+	@JoinColumn(name="product_id")
 	private Product product;
 	
 	public SaleProduct(SaleProductBuilder saleProductBuilder) {
@@ -29,7 +42,7 @@ public class SaleProduct implements PersistantModel {
 		return sale;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
