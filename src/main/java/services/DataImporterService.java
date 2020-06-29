@@ -1,13 +1,11 @@
 package services;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import factories.PersistantModelFactory;
 import models.CSVData;
 import models.Customer;
-import models.PersistantModel;
 import models.Sale;
 import models.Salesperson;
 import repositories.CustomerRepository;

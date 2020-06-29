@@ -33,7 +33,7 @@ public class FileWatcherService {
 			e.printStackTrace();
 			System.out.println("System initialization error due to"
 					+ " I/O exception with Operational System watcher "
-					+ "service");
+					+ "service. error in filewatcher");
 		}
 	}
 	

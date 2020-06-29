@@ -1,9 +1,8 @@
 package factories;
 
 import models.CSVData;
-import models.PersistantModel;
 
-public abstract class PersistantModelFactory <T extends PersistantModel> {
+public abstract class PersistantModelFactory <T> {
 	
 	public static PersistantModelFactory getConcreteFactory(CSVData data) {
 		switch(data.getCode()) {
