@@ -14,23 +14,23 @@ import repositories.SalespersonRepository;
 import services.CSVDataReaderService;
 import services.DataImporterService;
 
-/*@SpringBootTest(classes= {DataImporterService.class, 
+@SpringBootTest(classes= {DataImporterService.class, 
 						  CSVDataReaderService.class, 
 						  CSVDataFactory.class,
 						  SalespersonRepository.class,
 						  SaleRepository.class,
 						  CustomerRepository.class})
 @RunWith(SpringRunner.class)
-@SpringBootConfiguration*/
+@SpringBootConfiguration
 public class DataImporterServiceTest {
 
-	//@Autowired
+	@Autowired
 	private DataImporterService dataImporter;
 	
 	@Test
 	public void importFileTest() {
-		/*String filename = getClass().getClassLoader().getResource("example").getFile();
-		dataImporter.importDataFromFile(filename);*/
+		String filename = getClass().getClassLoader().getResource("example").getFile();
+		dataImporter.importDataFromFile(filename);
 	}
 	
 }

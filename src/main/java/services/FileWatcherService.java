@@ -18,7 +18,7 @@ import org.springframework.stereotype.Service;
 public class FileWatcherService {
 	
 	@Autowired
-	DataImporterService dataImporterService;
+	ReportService reportService;
 	private Path monitoredFolder;
 	private WatchService watchService;
 	
@@ -46,7 +46,7 @@ public class FileWatcherService {
 				while ((watchKey = watchService.take()) != null) {
 					for (WatchEvent<?> event : watchKey.pollEvents()) {
 						String filepath = event.context().toString();
-						dataImporterService.importDataFromFile(filepath);
+						reportService.generateReport(filepath);
 					}
 					watchKey.reset();
 				}
@@ -60,7 +60,7 @@ public class FileWatcherService {
 		DirectoryStream<Path> stream = Files.newDirectoryStream(monitoredFolder);
 	    for (Path path : stream) {
 	    	if (!Files.isDirectory(path)) {
-	    		dataImporterService.importDataFromFile(path.toString());
+	    		reportService.generateReport(path.toString());
 	        }
 	    }	
 	}

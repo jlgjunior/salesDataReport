@@ -1,5 +1,6 @@
 package services;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -8,9 +9,7 @@ import models.CSVData;
 import models.Customer;
 import models.Sale;
 import models.Salesperson;
-import repositories.CustomerRepository;
-import repositories.SaleRepository;
-import repositories.SalespersonRepository;
+import repositories.IRepository;
 
 @Service
 public class DataImporterService {
@@ -18,11 +17,11 @@ public class DataImporterService {
 	@Autowired
 	CSVDataReaderService csvReaderService;
 	@Autowired
-	SalespersonRepository salespersonRepository;
+	IRepository<Salesperson> salespersonRepository;
 	@Autowired
-	CustomerRepository customerRepository;
+	IRepository<Customer> customerRepository;
 	@Autowired
-	SaleRepository saleRepository;
+	IRepository<Sale> saleRepository;
 	
 	public DataImporterService() {
 		
